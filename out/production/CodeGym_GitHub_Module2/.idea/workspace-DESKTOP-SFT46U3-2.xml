@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1ac41f6d-8d2b-415d-922e-4481aab29445" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Demo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SystemTime.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/arrays_and_method/Demo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/arrays_and_method/Reverse_array.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/arrays_and_method/convert_temperature.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/arrays_and_method/exercises/add_element_to_array.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/arrays_and_method/exercises/find_max_in_two_dimensions_array.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/arrays_and_method/exercises/join_two_arrays.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/arrays_and_method/exercises/remove_element_in_array.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/arrays_and_method/find_element_in_array.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/arrays_and_method/find_max_in_element.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/arrays_and_method/find_min_in_element.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/introduction_to_Java/bmi_calculator/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/introduction_to_Java/day_of_month/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/introduction_to_Java/hien_thi_loi_chao/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/introduction_to_Java/leap_year_checker/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/introduction_to_Java/linear_equation_resolver/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/introduction_to_Java/operator_expression/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/introduction_to_Java/variable_data_type/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/loop_in_Java/Exercises/Draw_shapes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/loop_in_Java/Exercises/Show_first_20_primes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/loop_in_Java/Exercises/Show_primes_which_less_than_100.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/loop_in_Java/drawing_menu/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/loop_in_Java/great_common_factor/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/loop_in_Java/interest_calculator/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/loop_in_Java/prime_number_checker/Main.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package-info" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2FhRDIG8VV0CfQuGMADQflu8eEk" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/OneDrive - votranhung/Code Gym/CodeGym_GitHub_Module2&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Application.remove_element_in_array">
+    <configuration name="add_element_to_array" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="src.arrays_and_method.exercises.add_element_to_array" />
+      <module name="CodeGym_GitHub_Module2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.arrays_and_method.exercises.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="convert_temperature" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="src.arrays_and_method.convert_temperature" />
+      <module name="CodeGym_GitHub_Module2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.arrays_and_method.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="find_min_in_element" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="src.arrays_and_method.find_min_in_element" />
+      <module name="CodeGym_GitHub_Module2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.arrays_and_method.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="join_two_arrays" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="src.arrays_and_method.exercises.join_two_arrays" />
+      <module name="CodeGym_GitHub_Module2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.arrays_and_method.exercises.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="remove_element_in_array" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="src.arrays_and_method.exercises.remove_element_in_array" />
+      <module name="CodeGym_GitHub_Module2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.arrays_and_method.exercises.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.remove_element_in_array" />
+        <item itemvalue="Application.join_two_arrays" />
+        <item itemvalue="Application.add_element_to_array" />
+        <item itemvalue="Application.find_min_in_element" />
+        <item itemvalue="Application.convert_temperature" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1ac41f6d-8d2b-415d-922e-4481aab29445" name="Changes" comment="" />
+      <created>1664942207260</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1664942207260</updated>
+      <workItem from="1664942209089" duration="10398000" />
+      <workItem from="1665018569060" duration="25967000" />
+      <workItem from="1665059060907" duration="3750000" />
+      <workItem from="1665107606994" duration="17395000" />
+      <workItem from="1665198696342" duration="1743000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
