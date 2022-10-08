@@ -1,4 +1,4 @@
-package src.loop_in_Java.Exercises;
+package src.introduction_to_Java.Exercises;
 
 import java.util.Scanner;
 
