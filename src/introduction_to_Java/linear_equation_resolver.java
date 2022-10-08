@@ -1,8 +1,8 @@
-package src.introduction_to_Java.linear_equation_resolver;
+package src.introduction_to_Java;
 
 import java.util.Scanner;
 
-public class Main {
+public class linear_equation_resolver {
     public static void main(String[] args) {
 
         System.out.println("Linear Equation Resolver");

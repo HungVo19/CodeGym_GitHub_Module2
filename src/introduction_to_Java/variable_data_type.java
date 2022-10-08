@@ -1,6 +1,6 @@
-package src.introduction_to_Java.variable_data_type;
+package src.introduction_to_Java;
 
-public class Main {
+public class variable_data_type {
     public static void main(String[] args) {
         int i = 10;
         float f = 20.5f;

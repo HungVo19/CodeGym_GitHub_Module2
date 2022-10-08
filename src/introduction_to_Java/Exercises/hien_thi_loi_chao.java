@@ -1,8 +1,8 @@
-package src.introduction_to_Java.hien_thi_loi_chao;
+package src.introduction_to_Java.Exercises;
 
 import java.util.Scanner;
 
-public class Main {
+public class hien_thi_loi_chao {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String string;

@@ -1,8 +1,8 @@
-package src.introduction_to_Java.leap_year_checker;
+package src.introduction_to_Java;
 
 import java.util.Scanner;
 
-public class Main {
+public class leap_year_check_tool {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int year;

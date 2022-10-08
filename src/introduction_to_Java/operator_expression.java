@@ -1,8 +1,8 @@
-package src.introduction_to_Java.operator_expression;
+package src.introduction_to_Java;
 
 import java.util.Scanner;
 
-public class Main {
+public class operator_expression {
     public static void main(String[] args) {
         float width;
         float height;
