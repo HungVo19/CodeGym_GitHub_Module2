@@ -6,49 +6,61 @@ import java.util.Scanner;
 public class add_element_to_array {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        int[] array = {10, 4, 6, 7, 8, 3, 2, 1, 0};
-        int value;
-        int index;
-
-
-        System.out.println("Enter value you want to add:");
-        value = input.nextInt();
 
         do {
-            System.out.println("Enter index you want to add:");
-            index = input.nextInt();
+            int[] originalArray = creatOriginalArray();
+            System.out.println("The original array is " + Arrays.toString(originalArray));
 
-            if (index <= -1 || index > array.length - 1) {
-                System.out.println("That index is out of bound!");
-            }
-        } while (index <= -1 || index > array.length - 1);
+            System.out.println("Enter value that you want to add:");
+            int valueToAdd = input.nextInt();
+            System.out.println("Enter the position you want add that value to array ");
+            int indexToAdd = input.nextInt();
 
-        array[index] = value;
-
-                System.out.printf("\n%-20s%s", "New array is: ", "");
-        for (int i =0; i < array.length; i++){
-            System.out.print(array[i] + "\t");
-        }
-
-//        System.out.println("Enter index you want to add");
-//        index = input.nextInt();
-//
-//        if (index < 0){
-//            int size = Math.abs(index) + sourceArray.length;
-//            int[] targetArray = new int[size];
-//
-//            targetArray[0] = value;
-//
-//            for (int i = 1; i < Math.abs(index); i++){
-//                targetArray[i] = 0;
-//            }
-//
-//            for (int i = Math.abs(index); i < targetArray.length; i++){
-//                targetArray[i] = sourceArray[i-index-1];
-//            }
-//
-//            System.out.println(Arrays.toString(targetArray));
-//            }
-        }
+            System.out.println("New array is " + Arrays.toString(createNewArray(originalArray, valueToAdd, indexToAdd)));
+        } while (true);
     }
+
+    static int[] creatOriginalArray() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter size of the array:");
+        int size = input.nextInt();
+        int[] array = new int[size];
+        for (int i = 0; i < size; i++) {
+            System.out.println("Enter the element at index " + i + " :");
+            array[i] = input.nextInt();
+        }
+        return array;
+    }
+
+    public static int[] createNewArray(int[] array, int value, int indexToAdd) {
+        int[] newArray = {};
+        if (indexToAdd < 0) {
+            newArray = new int[array.length + Math.abs(indexToAdd)];
+            newArray[0] = value;
+//            for (int i = 1; i < Math.abs(indexToAdd); i++) {
+//                newArray[i] = 0;
+//            }
+            for (int i = Math.abs(indexToAdd), j = 0; i < newArray.length && j < array.length; i++, j++) {
+                newArray[i] = array[j];
+            }
+        } else if (indexToAdd < array.length) {
+            newArray = new int[array.length + 1];
+            for (int i = 0; i < indexToAdd; i++) {
+                newArray[i] = array[i];
+            }
+            newArray[indexToAdd] = value;
+            for (int i = indexToAdd + 1; i < newArray.length; i++) {
+                newArray[i] = array[i - 1];
+            }
+        } else {
+            newArray = new int[array.length + Math.abs(indexToAdd - array.length + 1)];
+            for (int i = 0; i < array.length; i++) {
+                newArray[i] = array[i];
+            }
+            newArray[newArray.length - 1] = value;
+        }
+        return newArray;
+    }
+}
+
 
