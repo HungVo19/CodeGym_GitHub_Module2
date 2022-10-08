@@ -1,8 +1,8 @@
-package src.loop_in_Java.prime_number_checker;
+package src.loop_in_Java;
 
 import java.util.Scanner;
 
-public class Main {
+public class prime_check_tool {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter a number to check: ");

@@ -1,8 +1,8 @@
-package src.loop_in_Java.drawing_menu;
+package src.loop_in_Java;
 
 import java.util.Scanner;
 
-public class Main {
+public class drawing_menu {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 

@@ -1,8 +1,8 @@
-package src.loop_in_Java.great_common_factor;
+package src.loop_in_Java;
 
 import java.util.Scanner;
 
-public class Main {
+public class great_common_factor {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int a;
