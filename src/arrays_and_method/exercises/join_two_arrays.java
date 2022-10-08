@@ -33,8 +33,8 @@ public class join_two_arrays {
             array3[i] = array1[i];
         }
 
-        for (int i = sizeArray2; i <= sizeArray3; i++){
-            array3[i-1] = array2[i-sizeArray2];
+        for (int i = sizeArray1,j=0; i < sizeArray3 && j<sizeArray2; i++,j++){
+            array3[i] = array2[j];
         }
 
         System.out.println("New array is: " + Arrays.toString(array3));
