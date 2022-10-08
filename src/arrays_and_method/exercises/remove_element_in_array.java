@@ -4,57 +4,58 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class remove_element_in_array {
+
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        int size = input.nextInt();
-        int[] array = createArray(size);
-        System.out.println("Original array is" + Arrays.toString(array));
+        do {
+            System.out.println("Create an array first: ");
+            int[] array = createOriginalArray();
 
-        int value;
+            int indexToDelete = -1;
+            do {
+                System.out.println("Enter value you want to delete:");
+                int valueToDelete = input.nextInt();
 
-        System.out.println("Enter value you want to delete:");
-        value = input.nextInt();
-
-        int index = findIndex(array, value);
-        System.out.println("Element that you want to delete is at index " + index);
-
-        if (index == -1) {
-            System.out.println(value + " is not found in array");
-        } else {
-            if (index != array.length - 1) {
-                for (int j = index; j < array.length - 1; j++) {
-                    array[j] = array[j + 1];
+                indexToDelete = findIndex(array, valueToDelete);
+                if (indexToDelete == -1) {
+                    System.out.println(valueToDelete + " is not found in the array");
+                } else {
+                    System.out.println("New array is " + Arrays.toString(createNewArray(array, indexToDelete)));
+                    break;
                 }
-                array[array.length - 1] = 0;
-            } else {
-                array[array.length - 1] = 0;
-
-            }
-            System.out.print(Arrays.toString(array));
-        }
+            } while (indexToDelete == -1);
+        } while (true);
     }
 
-    public static int findIndex(int[] array, int value) {
-        int index = 0;
-        boolean check = false;
+    public static int findIndex(int[] array, int valueToDelete) {
+        int index = -1;
         for (int i = 0; i < array.length; i++) {
-            if (value == array[i]) {
+            if (valueToDelete == array[i]) {
                 index = i;
-                check = true;
                 break;
             }
-        }
-        if (!check) {
-            index = -1;
         }
         return index;
     }
 
-    public static int[] createArray(int size) {
+    public static int[] createNewArray(int[] array, int index) {
+        int[] newArray = new int[array.length - 1];
+        if (index >= 0) System.arraycopy(array, 0, newArray, 0, index);
+        if (array.length - (index + 1) >= 0)
+            System.arraycopy(array, index + 1, newArray, index + 1 - 1, array.length - (index + 1));
+        return newArray;
+    }
+
+    public static int[] createOriginalArray() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Input size of array you want to create:");
+        int size = input.nextInt();
         int[] array = new int[size];
         for (int i = 0; i < size; i++) {
-            System.out.println("Enter element at index " + i + " :");
+            System.out.println("Enter element " + (i + 1) + " : ");
+            array[i] = input.nextInt();
         }
         return array;
     }
