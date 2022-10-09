@@ -3,7 +3,7 @@ package src.arrays_and_method.exercises;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class find_max_in_two_dimensional_array {
+public class find_max_min_in_two_dimensional_array {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
@@ -12,13 +12,24 @@ public class find_max_in_two_dimensional_array {
             System.out.println("Menu");
             System.out.println("1. Create 2D array:");
             System.out.println("0. Exit");
+            System.out.println("Enter you choice:");
             choice = input.nextInt();
             switch (choice) {
                 case 1:
                     int[][] array = createTwoDimensionalArray();
                     System.out.println("Your 2D array is " + Arrays.deepToString(array));
-
-                    System.out.println("Max value in above array is " + findMaxValueIn2DArray(array));
+                    System.out.println("1. Find max value:");
+                    System.out.println("2. Find min value:");
+                    System.out.println("Enter you choice:");
+                    int choice1 = input.nextInt();
+                    switch (choice1) {
+                        case 1:
+                            System.out.println("Max value in above array is " + findMaxValueIn2DArray(array));
+                            break;
+                        case 2:
+                            System.out.println("Min value in above array is " + findMinValueIn2DArray(array));
+                            break;
+                    }
                     break;
                 case 0:
                     System.exit(0);
@@ -35,8 +46,7 @@ public class find_max_in_two_dimensional_array {
         int[][] array = new int[rows][cols];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                System.out.println("Enter value  at index " + "[" + i + "]"
-                        + "[" + j + "]");
+                System.out.println("Enter value  at index " + "[" + i + "]" + "[" + j + "]");
                 array[i][j] = input.nextInt();
             }
         }
@@ -53,5 +63,17 @@ public class find_max_in_two_dimensional_array {
             }
         }
         return maxValue;
+    }
+
+    static int findMinValueIn2DArray(int[][] array) {
+        int minValue = array[0][0];
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[0].length; j++) {
+                if (minValue > array[i][j]) {
+                    minValue = array[i][j];
+                }
+            }
+        }
+        return minValue;
     }
 }
