@@ -24,10 +24,10 @@ public class find_max_min_in_two_dimensional_array {
                     int choice1 = input.nextInt();
                     switch (choice1) {
                         case 1:
-                            System.out.println("Max value in above array is " + findMaxValueIn2DArray(array));
+                            System.out.println("Max value in the array is " + findMaxValueIn2DArray(array));
                             break;
                         case 2:
-                            System.out.println("Min value in above array is " + findMinValueIn2DArray(array));
+                            System.out.println("Min value in the array is " + findMinValueIn2DArray(array));
                             break;
                     }
                     break;
@@ -56,7 +56,7 @@ public class find_max_min_in_two_dimensional_array {
     static int findMaxValueIn2DArray(int[][] array) {
         int maxValue = array[0][0];
         for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[0].length; j++) {
+            for (int j = 0; j < array[i].length; j++) {
                 if (maxValue < array[i][j]) {
                     maxValue = array[i][j];
                 }
@@ -68,7 +68,7 @@ public class find_max_min_in_two_dimensional_array {
     static int findMinValueIn2DArray(int[][] array) {
         int minValue = array[0][0];
         for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[0].length; j++) {
+            for (int j = 0; j < array[i].length; j++) {
                 if (minValue > array[i][j]) {
                     minValue = array[i][j];
                 }
