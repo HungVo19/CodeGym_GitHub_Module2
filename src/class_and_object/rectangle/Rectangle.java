@@ -1,7 +1,7 @@
 package src.class_and_object.rectangle;
 
 public class Rectangle {
-    double width, height;
+    private double width, height;
 
     public Rectangle(){
 

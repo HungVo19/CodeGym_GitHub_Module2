@@ -25,27 +25,21 @@ public class QuadraticEquation {
         return this.b * this.b - 4 * this.a * this.c;
     }
 
+
     public double getRoot1(){
         double r1 = 0;
-        if (getDiscriminant() >=0){
-            r1 = (- this.b + Math.sqrt(this.b * this.b - 4 * this.a * this.c))/(2 * this.a);
-        }
-        else {
-            System.out.println("The equation has no root");
+        if (getDiscriminant() >= 0){
+            r1 = (Math.pow((this.b * this.b - 4 * this.a * this.c), 0.5) - this.b)/(2 * this.a);
         }
         return r1;
     }
 
     public double getRoot2(){
         double r2 = 0;
-        if (getDiscriminant() >=0){
-            r2 = (- this.b - Math.sqrt(this.b * this.b - 4 * this.a * this.c))/(2 * this.a);
-        }
-        else {
-            System.out.println("The equation has no root");
+        if (getDiscriminant() >= 0){
+            r2 = (- this.b - Math.pow((this.b * this.b - 4 * this.a * this.c), 0.5))/(2 * this.a);
         }
         return r2;
     }
-
 
 }
