@@ -1,10 +1,19 @@
 package src.class_and_object;
 
-public class demo {
-    class MyClass {
-        String field1;
-        void field2;
-        double field3;
-        int field4;
+class A {
+     void msg() {
+        System.out.println("Hello java");
+    }
+}
+
+class Simple extends A {
+      private void msg() {
+        System.out.println("Hello java");
+    }
+    /*Compile Time Error*/
+
+    public static void main(String args[]) {
+        Simple obj = new Simple();
+        obj.msg();
     }
 }
