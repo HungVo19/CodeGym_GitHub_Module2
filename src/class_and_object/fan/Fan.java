@@ -40,13 +40,6 @@ public class Fan {
         this.speed = speed;
     }
 
-    public String isOn() {
-        if (on) {
-            return "on";
-        } else {
-            return "of";
-        }
-    }
 
     public void setOn(boolean on) {
         this.on = on;
@@ -68,7 +61,13 @@ public class Fan {
         this.color = color;
     }
 
-
+    public String isOn() {
+        if (on) {
+            return "on";
+        } else {
+            return "of";
+        }
+    }
 
     public String toString() {
         return "Fan speed is " + speed + ", color is " + color
