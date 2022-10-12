@@ -1,23 +1,21 @@
 package src.inheritance.shape;
 
 public class Rectangle extends Shape {
-    private double width;
-    private double height;
+    private double width = 1.0;
+    private double length = 1.0;
 
-    public Rectangle(){
-        this.width = 1.0;
-        this.height = 1.0;
+    public Rectangle() {
     }
 
-    public Rectangle(double width, double height) {
+    public Rectangle(double width, double length) {
         this.width = width;
-        this.height = height;
+        this.length = length;
     }
 
-    public Rectangle(String color, boolean filled, double width, double height) {
+    public Rectangle(String color, boolean filled, double width, double length) {
         super(color, filled);
         this.width = width;
-        this.height = height;
+        this.length = length;
     }
 
     public double getWidth() {
@@ -28,25 +26,25 @@ public class Rectangle extends Shape {
         this.width = width;
     }
 
-    public double getHeight() {
-        return height;
+    public double getLength() {
+        return length;
     }
 
-    public void setHeight(double height) {
-        this.height = height;
+    public void setLength(double length) {
+        this.length = length;
     }
 
     public double getArea(){
-        return this.width * this.height;
+        return this.length * this.width;
     }
 
-    public double getPerimeter(){
-        return ((this.width + this.height) * 2);
+    public double getParameter() {
+        return (this.width + this.length) * 2;
     }
 
     @Override
     public String toString() {
-        return "A Rectangle with width " + this.width + ", and length ="+
-                this.height + ", which is a subclass " + super.toString();
+        return "A Rectangle with width = " + getWidth() + ", length = " + getLength() +
+               ", area = " + getArea() + ", which is a subclass of " + super.toString();
     }
 }
