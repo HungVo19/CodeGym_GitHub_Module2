@@ -1,19 +1,19 @@
 package src.inheritance.shape;
 
 public class Circle extends Shape{
-    private double radius;
+    private double radius = 1.0;
 
-    Circle(){
-        radius = 1.0d;
+    public Circle(){
+
     }
 
-    Circle(double radius){
+    public Circle(double radius){
         this.radius = radius;
     }
 
-    Circle(double radius, String color, boolean filled){
+    public Circle(double radius, String color, boolean filled){
         super(color,filled);
-        this.filled = filled;
+        this.radius = radius;
     }
 
     public double getRadius() {
@@ -33,7 +33,7 @@ public class Circle extends Shape{
 
     @Override
     public String toString() {
-        return " A Circle with radius = " + radius
+        return " A Circle with radius = " + getRadius()
                 + ", which is a subclass of " + super.toString();
     }
 }

@@ -1,15 +1,14 @@
 package src.inheritance.shape;
 
 public class Shape {
-    private String color;
-    private Boolean filled;
+    private String color = "green";
+    private Boolean filled = true;
 
-    Shape(){
-        this.color = "green";
-        this.filled = true;
+    public Shape() {
+
     }
 
-    Shape(String color, boolean filled){
+    public Shape(String color, boolean filled) {
         this.color = color;
         this.filled = filled;
     }
@@ -30,7 +29,20 @@ public class Shape {
         this.filled = filled;
     }
 
-    public String toString(){
-        return "A Shape with color of " + color + "and " + (isFilled()? "filled":"not filled");
+    @Override
+    public String toString() {
+        return "A Shape with color of "
+                + getColor()
+                + " and "
+                + (isFilled() ? "filled" : "not filled");
+    }
+
+    public static void main(String[] args) {
+        Shape shape = new Shape();
+        System.out.println(shape);
+        shape.toString();
+
+        shape = new Shape("red", false);
+        System.out.println(shape);
     }
 }
