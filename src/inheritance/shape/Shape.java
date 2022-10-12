@@ -1,8 +1,8 @@
 package src.inheritance.shape;
 
 public class Shape {
-    String color;
-    Boolean filled;
+    private String color;
+    private Boolean filled;
 
     Shape(){
         this.color = "green";
@@ -31,6 +31,6 @@ public class Shape {
     }
 
     public String toString(){
-        return "Demo Shape with color of " + color + "and " + (isFilled()? "filled":"not filled");
+        return "A Shape with color of " + color + "and " + (isFilled()? "filled":"not filled");
     }
 }
