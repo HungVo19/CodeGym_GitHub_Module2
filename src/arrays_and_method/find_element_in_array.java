@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class find_element_in_array {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        String[] students = {"Name A", "Name B", "Name C", "Name D", "Name E",
+        String[] students = {"Name Demo", "Name B", "Name C", "Name D", "Name E",
                             "Name F", "Name G", "Name H", "Name I", "Name J",};
 
         System.out.println("Enter a name: ");
