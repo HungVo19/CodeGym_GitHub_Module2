@@ -1,4 +1,4 @@
-package Point_2D_and_3D.circle_and_cylinder;
+package circle_and_cylinder;
 
 public class Circle {
     private double radius;
