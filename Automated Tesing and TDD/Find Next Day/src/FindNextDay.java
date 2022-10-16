@@ -1,44 +1,24 @@
 public class FindNextDay {
 
-    public static String findNextDay(int day, int month, int year) {
-        switch (day) {
-            case 28:
-                if (month == 2) {
-                    if (checkLeapYear(year)) {
-                        return (day + 1) + "/" + month + "/" + year;
-                    } else {
-                        return 1 + "/" + (month + 1) + "/" + year;
-                    }
-                }
-            case 29:
-                if (checkLeapYear(year) && month == 2) {
-                    return 1 + "/" + (month + 1) + "/" + year;
-                } else if (month == 2) {
-                    System.out.println("Not available!!");
-                } else {
-                    return (day + 1) + "/" + month + "/" + year;
-                }
-            case 30:
-                switch (month) {
-                    case 4:
-                    case 6:
-                    case 9:
-                    case 11:
-                        return 1 + "/" + (month + 1) + "/" + year;
-                    default:
-                        return (day + 1) + "/" + month + "/" + year;
-                }
-            case 31:
-                if (month == 12) {
-                    return "1/1/" + (year + 1);
-                } else if (month != 2) {
-                    return 1 + "/" + (month + 1) + "/" + year;
-                } else {
-                    return "Not available!";
-                }
-            default:
-                return (day + 1) + "/" + month + "/" + year;
+    public static String findNextDay(int date, int month, int year) {
+
+        boolean monthOf30days = date == 30 && (month == 4 || month == 6 || month == 9 || month == 11);
+        boolean monthOf31daysExceptDec = date == 31 && (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10);
+
+        if (checkLeapYear(year)){
+            if (month == 2 && date == 29){
+                return "1/" + (month + 1) + "/" + year;
+            }
+        } else {
+            return "Not available!!";
         }
+
+        if (monthOf30days || monthOf31daysExceptDec) {
+            return "1/" + (month + 1) + "/" + year;
+        } else if (date == 31 && month == 12) {
+            return "1/1" + "/" + (year + 1);
+        }
+        return (date + 1) + "/" + month + "/" + year;
     }
 
     private static boolean checkLeapYear(int year) {
@@ -54,9 +34,5 @@ public class FindNextDay {
         } else {
             return false;
         }
-    }
-
-    public static void main(String[] args) {
-        System.out.println(FindNextDay.checkLeapYear(2018));
     }
 }

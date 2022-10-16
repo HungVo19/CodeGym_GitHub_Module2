@@ -76,4 +76,16 @@ class FindNextDayTest {
 
         assertEquals(expected,result);
     }
+
+    @Test
+    @DisplayName("Test case 7")
+    void indNextDayCase7() {
+        int day = 31;
+        int month = 11;
+        int year = 2018;
+        String expected = "Not available!!";
+        String result = FindNextDay.findNextDay(day,month,year);
+
+        assertEquals(expected,result);
+    }
 }
