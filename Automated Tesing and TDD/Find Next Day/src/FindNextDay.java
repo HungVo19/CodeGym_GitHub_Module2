@@ -9,21 +9,7 @@ public class FindNextDay {
         if (date < 1 || (date > 30 && monthOf30days) || (date > 31 && monthOf31daysExceptDec) || month < 1 || month > 12) {
             return "Not available!!";
         } else {
-//        if (checkLeapYear(year)) {
-//            if (month == 2 && date == 29) {
-//                return "1/" + (month + 1) + "/" + year;
-//            } else if (month == 2) {
-//                return (date + 1) + "/" + month + "/" + year;
-//            }
-//        } else {
-//            if (month == 2 && date == 29) {
-//                return "Not available!!";
-//            } else if (month == 2 && date == 28) {
-//                return "1/" + (month + 1) + "/" + year;
-//            } else {
-//                return (date + 1) + "/" + month + "/" + year;
-//            }
-//        }
+
             if (date == 30 && monthOf30days || date ==31 && monthOf31daysExceptDec || date29FebOfLeapYear || date28FebOfNotLeapYear) {
                 return "1/" + (month + 1) + "/" + year;
             } else if (date == 31 && month == 12) {
