@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Automated Tesing and TDD/Absolute Number Calculator/Absolute Number Calculator.iml" filepath="$PROJECT_DIR$/Automated Tesing and TDD/Absolute Number Calculator/Absolute Number Calculator.iml" />
       <module fileurl="file://$PROJECT_DIR$/Access Modifier. Static Method. Static Property/Access Modifier. Static Method. Static Property.iml" filepath="$PROJECT_DIR$/Access Modifier. Static Method. Static Property/Access Modifier. Static Method. Static Property.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Array Lists/Array Lists.iml" filepath="$PROJECT_DIR$/Array Lists/Array Lists.iml" />
       <module fileurl="file://$PROJECT_DIR$/Arrays and Methods/Arrays and Methods.iml" filepath="$PROJECT_DIR$/Arrays and Methods/Arrays and Methods.iml" />
       <module fileurl="file://$PROJECT_DIR$/Automated Tesing and TDD/Automated Tesing and TDD.iml" filepath="$PROJECT_DIR$/Automated Tesing and TDD/Automated Tesing and TDD.iml" />
       <module fileurl="file://$PROJECT_DIR$/Automated Tesing and TDD/Check Triangle/Check Triangle.iml" filepath="$PROJECT_DIR$/Automated Tesing and TDD/Check Triangle/Check Triangle.iml" />
@@ -17,7 +18,6 @@
       <module fileurl="file://$PROJECT_DIR$/Introduction to Java/Introduction to Java.iml" filepath="$PROJECT_DIR$/Introduction to Java/Introduction to Java.iml" />
       <module fileurl="file://$PROJECT_DIR$/Loop in Java/Loop in Java.iml" filepath="$PROJECT_DIR$/Loop in Java/Loop in Java.iml" />
       <module fileurl="file://$PROJECT_DIR$/Mini Test/Mini Test.iml" filepath="$PROJECT_DIR$/Mini Test/Mini Test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/My Own Exercises/My Own Exercises.iml" filepath="$PROJECT_DIR$/My Own Exercises/My Own Exercises.iml" />
       <module fileurl="file://$PROJECT_DIR$/Automated Tesing and TDD/Simple Calculator/Simple Calculator.iml" filepath="$PROJECT_DIR$/Automated Tesing and TDD/Simple Calculator/Simple Calculator.iml" />
     </modules>
   </component>
