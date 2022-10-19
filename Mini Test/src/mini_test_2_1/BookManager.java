@@ -6,11 +6,10 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class BookManager {
-    private List<Book> books = new ArrayList<>();
+    private final List<Book> books = new ArrayList<>();
 
     public BookManager() {
     }
-
 
     public void addBook(Scanner scanner) {
         System.out.println("Enter book data");
@@ -46,13 +45,13 @@ public class BookManager {
 
                 FictionBook book1 = new FictionBook(bookCode, name, price, author, category);
                 books.add(book1);
-                System.out.println("New book is added successfully!");
+                System.out.println("New Fiction book is added successfully!");
                 break;
             case 3:
                 System.out.println("Add normal book");
                 Book book2 = new Book(bookCode, name, price, author);
                 books.add(book2);
-                System.out.println("New book is added successfully!");
+                System.out.println("New Programming book is added successfully!");
                 break;
         }
     }
@@ -81,7 +80,7 @@ public class BookManager {
         if (count == 0) {
             System.out.println("Cannot find any book with" + language + " language");
         } else {
-            System.out.println("Total books which is in " + language + "language are " + count);
+            System.out.println("Total books which is in " + language + "language are " + count + " books");
         }
     }
 
@@ -98,9 +97,9 @@ public class BookManager {
             }
         }
         if (count == 0){
-            System.out.println("Cannot find any book in " + category);
+            System.out.println("Cannot find any book in " + category + " category");
         }
-        System.out.println("Total books which is " + category + " are " + count);
+        System.out.println("Total books which is " + category + " are " + count + " books");
     }
 
     public void countByPrice(Scanner scanner){
@@ -118,7 +117,7 @@ public class BookManager {
         if (count == 0){
             System.out.println("Cannot find any book in that price range");
         }
-        System.out.println("Total books which have price below " + price + " are " + count);
+        System.out.println("Total books which have price below " + price + " are " + count + " books");
     }
 
     public void displayAllBooks(){
