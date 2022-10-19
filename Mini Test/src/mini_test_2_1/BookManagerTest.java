@@ -17,6 +17,7 @@ public class BookManagerTest {
             System.out.println("4. Filter by language:");
             System.out.println("5. Filter by category");
             System.out.println("6. Filter by price");
+            System.out.println("0. Exit");
             choice = Integer.parseInt(scanner.nextLine());
             switch (choice){
                 case 1:
@@ -37,6 +38,8 @@ public class BookManagerTest {
                 case 6:
                     bookManager.countByPrice(scanner);
                     break;
+                case 0:
+                    System.exit(0);
             }
         } while (true);
     }

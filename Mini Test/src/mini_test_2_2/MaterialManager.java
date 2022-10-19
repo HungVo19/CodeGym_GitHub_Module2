@@ -1,6 +1,5 @@
 package mini_test_2_2;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
@@ -33,8 +32,7 @@ public class MaterialManager implements Discount {
         System.out.println("Enter name:");
         String name = scanner.nextLine();
         System.out.println("Enter manufacturing date:");
-        LocalDate manufacturingDate = scanner.
-        System.out.println("Crispy flour:");
+        LocalDate manufacturingDate = LocalDate.parse(scanner.nextLine());
         System.out.println("Enter type of material you want to add");
         System.out.println("Enter type of material you want to add");
     }
