@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class BookManager {
 
-    private final List<Book> books;
+    private final List <Book> books;
 
     public BookManager() {
         books = new ArrayList<>();
