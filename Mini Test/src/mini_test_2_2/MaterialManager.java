@@ -31,7 +31,7 @@ public class MaterialManager implements Discount {
         String id = scanner.nextLine();
         System.out.println("Enter name:");
         String name = scanner.nextLine();
-        System.out.println("Enter manufacturing date (:");
+        System.out.println("Enter manufacturing date (format 'YYYY/MM/DD'):");
         LocalDate manufacturingDate = LocalDate.parse(scanner.nextLine());
         System.out.println("Enter type of material you want to add");
         System.out.println("Enter type of material you want to add");

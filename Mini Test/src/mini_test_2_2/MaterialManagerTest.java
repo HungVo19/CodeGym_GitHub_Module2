@@ -7,6 +7,10 @@ public class MaterialManagerTest {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        MaterialManager materialManager = new MaterialManager();
+
+        materialManager.addMaterial(scanner);
+
     }
 
 }
