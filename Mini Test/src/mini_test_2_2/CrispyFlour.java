@@ -34,4 +34,15 @@ public class CrispyFlour extends Material {
     public LocalDate getExpiryDate() {
         return this.getManufacturingDate().plusYears(1);
     }
+
+    @Override
+    public String toString() {
+        return "Crispy Flour {" +
+                "id='" + super.getId() + '\'' +
+                ", name='" + super.getName() + '\'' +
+                ", manufacturingDate=" + super.getManufacturingDate() +
+                ", cost=" + super.getCost() +
+                ", quantity = " + this.quantity +
+                '}';
+    }
 }

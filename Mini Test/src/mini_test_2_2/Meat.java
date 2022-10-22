@@ -34,4 +34,14 @@ public class Meat extends Material {
         return this.getManufacturingDate().plusDays(7);
     }
 
+    @Override
+    public String toString() {
+        return "Meat {" +
+                "id='" + super.getId() + '\'' +
+                ", name='" + super.getName() + '\'' +
+                ", manufacturingDate=" + super.getManufacturingDate() +
+                ", cost=" + super.getCost() +
+                ", weight = " + this.weight +
+                '}';
+    }
 }

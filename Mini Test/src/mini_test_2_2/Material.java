@@ -54,13 +54,4 @@ public abstract class Material {
 
     public abstract LocalDate getExpiryDate();
 
-    @Override
-    public String toString() {
-        return "Material{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", manufacturingDate=" + manufacturingDate +
-                ", cost=" + cost +
-                '}';
-    }
 }

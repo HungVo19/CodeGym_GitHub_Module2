@@ -18,7 +18,7 @@ public class MyList<E> {
         if(size == elements.length) {
             ensureCapacity();
         }
-        for (int i = index +1; )
+        for (int i = index +1; );
     }
 
     public void ensureCapacity () {
