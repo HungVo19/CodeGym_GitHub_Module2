@@ -178,32 +178,40 @@ public class MaterialManager implements Discount {
         for (Material material : material) {
             Period period = Period.between(LocalDate.now(), material.getExpiryDate());
             if (material instanceof Meat) {
-                if (period.getDays() <= 0) {
-                    System.out.println("Meat is expired!");
-                } else {
-                    if (period.getDays() <= 5) {
-                        double newAmount = material.getAmount() * 0.7;
-                        System.out.println(material.getName() + " Meat discounts 30% and the new price is " + newAmount);
-                    } else {
-                        double newAmount = material.getAmount() * 0.9;
-                        System.out.println(material.getName() + " Meat discounts 10% and the new price is " + newAmount);
-                    }
-                }
+                discountMeat(material, period);
             } else if (material instanceof CrispyFlour) {
-                if (period.getMonths() <= 0) {
-                    System.out.println("Flour is expired!");
-                } else {
-                    if (period.getMonths() <= 2) {
-                        double newAmount = material.getAmount() * 0.6;
-                        System.out.println(material.getName() + " Flour discounts 40% and the new price is " + newAmount);
-                    } else if (period.getMonths() <= 4) {
-                        double newAmount = material.getAmount() * 0.8;
-                        System.out.println(material.getName() + " Flour discounts 20% and the new price is " + newAmount);
-                    } else {
-                        double newAmount = material.getAmount() * 0.95;
-                        System.out.println(material.getName() + " Flour discounts 5% and the new price is " + newAmount);
-                    }
-                }
+                discountCrispyFlour(material, period);
+            }
+        }
+    }
+
+    private static void discountCrispyFlour(Material material, Period period) {
+        if (period.getMonths() <= 0) {
+            System.out.println("Flour is expired!");
+        } else {
+            if (period.getMonths() <= 2) {
+                double newAmount = material.getAmount() * 0.6;
+                System.out.println(material.getName() + " Flour discounts 40% and the new price is " + newAmount);
+            } else if (period.getMonths() <= 4) {
+                double newAmount = material.getAmount() * 0.8;
+                System.out.println(material.getName() + " Flour discounts 20% and the new price is " + newAmount);
+            } else {
+                double newAmount = material.getAmount() * 0.95;
+                System.out.println(material.getName() + " Flour discounts 5% and the new price is " + newAmount);
+            }
+        }
+    }
+
+    private static void discountMeat(Material material, Period period) {
+        if (period.getDays() <= 0) {
+            System.out.println("Meat is expired!");
+        } else {
+            if (period.getDays() <= 5) {
+                double newAmount = material.getAmount() * 0.7;
+                System.out.println(material.getName() + " Meat discounts 30% and the new price is " + newAmount);
+            } else {
+                double newAmount = material.getAmount() * 0.9;
+                System.out.println(material.getName() + " Meat discounts 10% and the new price is " + newAmount);
             }
         }
     }
