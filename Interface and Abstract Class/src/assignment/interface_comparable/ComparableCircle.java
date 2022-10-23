@@ -1,5 +1,6 @@
 package assignment.interface_comparable;
 
+import javafx.scene.shape.Circle;
 import src.inheritance.shape.Circle;
 
 public class ComparableCircle extends Circle implements Comparable<ComparableCircle>{
