@@ -39,6 +39,10 @@ public class ProductManagerUsingArrayList {
     }
 
     public void editById (Scanner scanner) {
+        if (this.products.isEmpty()) {
+            System.out.println("The list is Empty now!");
+            return;
+        }
         System.out.println("Enter id of product");
         String id = scanner.nextLine();
 
@@ -56,6 +60,10 @@ public class ProductManagerUsingArrayList {
     }
 
     public void removeByID (Scanner scanner) {
+        if (this.products.isEmpty()) {
+            System.out.println("The list is Empty now!");
+            return;
+        }
         System.out.println("Enter id of product");
         String id = scanner.nextLine();
 
@@ -81,29 +89,41 @@ public class ProductManagerUsingArrayList {
     }
 
     public void display () {
+        if (this.products.isEmpty()) {
+            System.out.println("The list is Empty now!");
+        }
         for (Product p: products) {
             System.out.println(p);
         }
     }
 
-    public Product searchByName(Scanner scanner) {
-        System.out.println("Enter name to search");
-        String name = scanner.nextLine();
-        int index = -1;
-        for (int i=0; i < products.size(); i++) {
-            if(products.get(i).getId().equals(name)) {
-                index = i;
-                break;
+    public void searchByName(Scanner scanner) {
+        if (this.products.isEmpty()) {
+            System.out.println("The list is Empty now!");
+        } else {
+            System.out.println("Enter name to search");
+            String name = scanner.nextLine();
+            int index = -1;
+            for (int i = 0; i < products.size(); i++) {
+                if (products.get(i).getName().equals(name)) {
+                    index = i;
+                    break;
+                }
+            }
+
+            if (index == -1) {
+                System.out.println(name + " Name is not found!");
+            } else {
+                System.out.println(products.get(index));
             }
         }
-
-        if (index == -1) {
-            System.out.println(name + " Name is not found!");
-        }
-        return products.get(index);
     }
 
     public void sortByCost (){
+        if (this.products.isEmpty()) {
+            System.out.println("The list is Empty now!");
+            return;
+        }
         CostAscending costAscending = new CostAscending();
         CostDescending costDescending = new CostDescending();
         Collections.sort(this.getProducts(), costAscending);

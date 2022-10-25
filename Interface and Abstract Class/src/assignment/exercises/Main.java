@@ -1,11 +1,11 @@
-package exercises;
+package assignment.exercises;
 
-import src.inheritance.shape.Shape;
-import src.inheritance.shape.Square;
-import exercises.interface_coloroble.HowToColorSquare;
-import exercises.interface_resizable.ResizableCircle;
-import exercises.interface_resizable.ResizeableRectangle;
-import exercises.interface_resizable.ResizeableSquare;
+
+import assignment.exercises.interface_coloroble.HowToColorSquare;
+import assignment.exercises.interface_resizable.ResizableCircle;
+import assignment.exercises.interface_resizable.ResizeableRectangle;
+import assignment.exercises.interface_resizable.ResizeableSquare;
+import shape.Shape;
 
 public class Main {
      public static void main(String[] args) {

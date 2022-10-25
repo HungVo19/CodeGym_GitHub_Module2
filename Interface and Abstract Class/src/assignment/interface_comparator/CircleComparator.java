@@ -1,6 +1,7 @@
 package assignment.interface_comparator;
 
-import src.inheritance.shape.Circle;
+
+import javafx.scene.shape.Circle;
 
 import java.util.Comparator;
 

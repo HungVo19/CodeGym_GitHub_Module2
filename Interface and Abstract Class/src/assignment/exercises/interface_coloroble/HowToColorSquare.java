@@ -1,6 +1,7 @@
-package exercises.interface_coloroble;
+package assignment.exercises.interface_coloroble;
 
-import src.inheritance.shape.Square;
+
+import shape.Square;
 
 public class HowToColorSquare extends Square implements Colorable {
     @Override

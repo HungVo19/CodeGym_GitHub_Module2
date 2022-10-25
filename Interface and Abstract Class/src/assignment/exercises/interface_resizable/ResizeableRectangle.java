@@ -1,6 +1,6 @@
-package exercises.interface_resizable;
+package assignment.exercises.interface_resizable;
 
-import src.inheritance.shape.Rectangle;
+import shape.Rectangle;
 
 public class ResizeableRectangle extends Rectangle implements Resizable {
     public ResizeableRectangle(String color, boolean filled, double width, double length) {

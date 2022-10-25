@@ -1,6 +1,7 @@
-package exercises.interface_resizable;
+package assignment.exercises.interface_resizable;
 
-import src.inheritance.shape.Square;
+
+import shape.Square;
 
 public class ResizeableSquare extends Square implements Resizable {
     public ResizeableSquare(String color, boolean filled, double side) {

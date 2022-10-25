@@ -38,6 +38,7 @@ public class Menu {
                     break;
                 case 5:
                     productManager.searchByName(scanner);
+                    break;
                 case 6:
                     productManager.sortByCost();
                     break;

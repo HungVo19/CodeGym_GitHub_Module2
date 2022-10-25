@@ -1,6 +1,7 @@
-package exercises.interface_resizable;
+package assignment.exercises.interface_resizable;
 
-import src.inheritance.shape.Circle;
+
+import shape.Circle;
 
 public class ResizableCircle extends Circle implements Resizable {
     public ResizableCircle(String color, boolean filled, double radius) {

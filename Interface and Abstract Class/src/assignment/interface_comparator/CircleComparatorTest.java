@@ -1,6 +1,8 @@
 package assignment.interface_comparator;
 
-import src.inheritance.shape.Circle;
+
+
+import shape.Circle;
 
 import java.util.Arrays;
 import java.util.Comparator;
