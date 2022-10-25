@@ -2,7 +2,7 @@ package mini_test_2_3;
 
 import java.util.Collections;
 
-public class FullTimeEmployee extends Employee {
+public class FullTimeEmployee extends Employee implements Comparable<FullTimeEmployee> {
     private int bonus;
     private int fine;
     private int hardSalary;
@@ -30,7 +30,7 @@ public class FullTimeEmployee extends Employee {
         this.fine = fine;
     }
 
-    public double getHardSalary() {
+    public int getHardSalary() {
         return hardSalary;
     }
 
@@ -47,14 +47,19 @@ public class FullTimeEmployee extends Employee {
     @Override
     public String toString() {
         return " FullTimeEmployee { id = " + super.getId() +
-                 ", name = " + super.getName() +
+                ", name = " + super.getName() +
                 ", age = " + super.getName() +
                 ", tel = " + super.getTel() +
                 ", email = " + super.getEmail() +
                 ", bonus = " + this.bonus +
                 ", fine = " + this.fine +
                 ", hard Salary =" + this.hardSalary +
-                ", net Salary = ;" + netSalary() ;
+                ", net Salary = " + netSalary() +
+                " }";
     }
-    
+
+    @Override
+    public int compareTo(FullTimeEmployee o) {
+        return this.getHardSalary()-o.getHardSalary();
+    }
 }

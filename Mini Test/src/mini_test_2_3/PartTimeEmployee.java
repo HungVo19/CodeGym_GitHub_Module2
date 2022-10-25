@@ -16,7 +16,7 @@ public class PartTimeEmployee extends Employee {
         this.workHours = workHours;
     }
 
-    public int netWage () {
+    public int netWage() {
         return workHours * 100000;
     }
 
@@ -28,6 +28,7 @@ public class PartTimeEmployee extends Employee {
                 ", tel = " + super.getTel() +
                 ", email = " + super.getEmail() +
                 ", work hours =" + this.workHours +
-                ", net wage = ;" + netWage();
+                ", net wage = ;" + netWage() +
+                " }";
     }
 }
