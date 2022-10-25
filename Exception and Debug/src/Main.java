@@ -12,3 +12,4 @@ public class Main {
         System.out.printf("\nResult: %d / %d = %d \n", numerator, denominator, result);
     }
 }
+
