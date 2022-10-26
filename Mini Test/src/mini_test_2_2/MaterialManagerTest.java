@@ -10,6 +10,7 @@ public class MaterialManagerTest {
 
         MaterialManager materialManager = new MaterialManager();
 
+
         do {
             System.out.println("Menu");
             System.out.println("1. Display all material ");
