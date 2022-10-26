@@ -9,7 +9,6 @@ public class ReadAndWrite {
         List<Integer> numbers = new ArrayList<>();
         try {
             File file = new File(path);
-
             if (!file.exists()) {
                 throw new FileNotFoundException();
             }

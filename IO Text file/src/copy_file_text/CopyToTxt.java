@@ -32,7 +32,9 @@ public class CopyToTxt {
 
     public static void main(String[] args) throws IOException {
         CopyToTxt copyToTxt = new CopyToTxt();
-        List<String> str = copyToTxt.readFile("IO Text file/src/copy_file_text/source.txt");
+        List<String> str = copyToTxt.readFile("IO Text file/src/copy_file_text/source.csv");
         copyToTxt.writeFile(str,"IO Text file/src/copy_file_text/target.txt");
     }
+
+
 }

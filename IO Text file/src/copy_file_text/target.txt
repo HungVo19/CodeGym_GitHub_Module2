@@ -1,9 +1,1 @@
-Id
-Name
-Age
-Email
-Tel
-Address
-Hello Word
-
-
+Id /nName /nAge /nEmail /nTel /nAddress /nHello Word /n /n /n

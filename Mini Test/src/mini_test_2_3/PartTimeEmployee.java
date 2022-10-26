@@ -28,7 +28,7 @@ public class PartTimeEmployee extends Employee {
                 ", tel = " + super.getTel() +
                 ", email = " + super.getEmail() +
                 ", work hours =" + this.workHours +
-                ", net wage = ;" + netWage() +
+                ", net wage = " + netWage() +
                 " }";
     }
 }
