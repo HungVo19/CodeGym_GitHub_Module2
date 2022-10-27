@@ -1,5 +1,7 @@
 package mini_test_2_2;
 
+import com.sun.org.apache.xpath.internal.operations.Neg;
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -38,11 +40,31 @@ public class MaterialManager implements Discount {
             String name = scanner.nextLine();
             System.out.println("Enter manufacturing date (dd.MM.yyyy):");
             LocalDate manufacturingDate = convertStringToLocalDate(scanner);
-            System.out.println("Enter cost:");
-            int cost = Integer.parseInt(scanner.nextLine());
+            //Enter cost, need try-catch
+            int cost = -1;
+            boolean checkCostInput = false;
+            do {
+                try {
+                    System.out.println("Enter cost:");
+                    cost = Integer.parseInt(scanner.nextLine());
+                    checkCostInput = true;
+                } catch (NumberFormatException e) {
+                    System.err.println("Wrong input type. Try again!");
+                }
+            } while (!checkCostInput);
+
             if (choice == 1) {
                 System.out.println("Enter weight of meat: ");
-                double weight = Integer.parseInt(scanner.nextLine());
+                double weight = -1;
+                boolean checkWeightInput = false;
+                do {
+                    try {
+                        weight = Integer.parseInt(scanner.nextLine());
+                        checkWeightInput = true;
+                    } catch (NumberFormatException e) {
+                        System.err.println("Wrong input type. Try again!");
+                    }
+                } while (!checkWeightInput);
                 material.add((Meat) new Meat(id, name, manufacturingDate, cost, weight));
             } else {
                 System.out.println("Enter quantity of crispy flour:");
@@ -51,7 +73,6 @@ public class MaterialManager implements Discount {
             }
         }
     }
-
 
     public void removeAll() {
         material.removeAll(material);
@@ -186,7 +207,7 @@ public class MaterialManager implements Discount {
     }
 
     private static void discountCrispyFlour(Material material, Period period) {
-        if (period.getMonths() <= 0) {
+        if (period.getMonths() < 0) {
             System.out.println("Flour is expired!");
         } else {
             if (period.getMonths() <= 2) {
@@ -203,7 +224,7 @@ public class MaterialManager implements Discount {
     }
 
     private static void discountMeat(Material material, Period period) {
-        if (period.getDays() <= 0) {
+        if (period.getDays() < 0) {
             System.out.println("Meat is expired!");
         } else {
             if (period.getDays() <= 5) {

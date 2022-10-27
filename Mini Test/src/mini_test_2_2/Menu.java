@@ -1,10 +1,8 @@
 package mini_test_2_2;
 
-import java.time.LocalDate;
-import java.util.List;
 import java.util.Scanner;
 
-public class MaterialManagerTest {
+public class Menu {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
