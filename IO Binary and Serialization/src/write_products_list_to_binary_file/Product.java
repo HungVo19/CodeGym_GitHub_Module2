@@ -1,4 +1,4 @@
-package read_write_student_list_to_binary_file.write_products_list_to_binary_file;
+package write_products_list_to_binary_file;
 
 import java.io.Serializable;
 
