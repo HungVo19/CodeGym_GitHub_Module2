@@ -1,13 +1,11 @@
 package mini_test_2_3;
 
-import java.util.Collections;
-
 public class FullTimeEmployee extends Employee implements Comparable<FullTimeEmployee> {
-    private int bonus;
-    private int fine;
-    private int hardSalary;
+    private double bonus;
+    private double fine;
+    private double hardSalary;
 
-    public FullTimeEmployee(String id, String name, int age, int tel, String email, int bonus, int fine, int hardSalary) {
+    public FullTimeEmployee(String id, String name, int age, int tel, String email, double bonus, double fine, double hardSalary) {
         super(id, name, age, tel, email);
         this.bonus = bonus;
         this.fine = fine;
@@ -18,7 +16,7 @@ public class FullTimeEmployee extends Employee implements Comparable<FullTimeEmp
         return bonus;
     }
 
-    public void setBonus(int bonus) {
+    public void setBonus(double bonus) {
         this.bonus = bonus;
     }
 
@@ -26,19 +24,19 @@ public class FullTimeEmployee extends Employee implements Comparable<FullTimeEmp
         return fine;
     }
 
-    public void setFine(int fine) {
+    public void setFine(double fine) {
         this.fine = fine;
     }
 
-    public int getHardSalary() {
+    public double getHardSalary() {
         return hardSalary;
     }
 
-    public void setHardSalary(int hardSalary) {
+    public void setHardSalary(double hardSalary) {
         this.hardSalary = hardSalary;
     }
 
-    public int netSalary () {
+    public double netSalary () {
         return this.hardSalary + (this.bonus - this.fine);
     }
 
@@ -58,6 +56,10 @@ public class FullTimeEmployee extends Employee implements Comparable<FullTimeEmp
 
     @Override
     public int compareTo(FullTimeEmployee o) {
-        return this.getHardSalary()-o.getHardSalary();
+        if(this.getHardSalary() > o.getHardSalary()) {
+            return 1;
+        } else {
+            return -1;
+        }
     }
 }

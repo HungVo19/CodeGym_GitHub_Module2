@@ -3,13 +3,14 @@ package mini_test_2_3;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class EmployeeManagementSystem {
     private ArrayList<Employee> employees;
 
     public EmployeeManagementSystem() {
-        employees = readFromFile();
+        this.employees = readFromFile();
     }
 
     public EmployeeManagementSystem(ArrayList<Employee> employees) {
@@ -26,29 +27,102 @@ public class EmployeeManagementSystem {
 
     public void add(int choice, Scanner scanner) {
         if (choice < 0 || choice > 2) {
-            System.out.println("Invalid choice");
+            System.err.println("Invalid choice. Try again!");
         } else {
-            System.out.print("Enter id:");
-            String id = scanner.nextLine();
-            System.out.print("Enter name:");
+            String id = "";
+            do {
+                System.out.println("Enter id: ");
+                id = scanner.nextLine();
+                if (checkIdExist(id)) {
+                    System.err.println("Id " + id + " is already existed. Please Input new Id!");
+                }
+                if (id.isEmpty() || id.contains(" ")) {
+                    System.err.println("Please enter valid Id");
+                }
+            } while (checkIdExist(id) || id.isEmpty() || id.contains(" "));
+
+            System.out.println("Enter name: ");
             String name = scanner.nextLine();
-            System.out.print("Enter age:");
-            int age = Integer.parseInt(scanner.nextLine());
-            System.out.print("Enter tel:");
-            int tel = Integer.parseInt(scanner.nextLine());
-            System.out.print("Enter email:");
+
+            boolean checkAgeInput = false;
+            int age = -1;
+            do {
+                try {
+                    System.out.println("Enter age: ");
+                    age = Integer.parseInt(scanner.nextLine());
+                    checkAgeInput = true;
+                } catch (NumberFormatException e) {
+                    System.out.println("Wrong input type. Try again!");
+                }
+            } while (!checkAgeInput);
+
+            boolean checkTelInput = false;
+            int tel = -1;
+            do {
+                try {
+                    System.out.println("Enter tel: ");
+                    tel = Integer.parseInt(scanner.nextLine());
+                    checkTelInput = true;
+                } catch (NumberFormatException e) {
+                    System.out.println("Wrong input type. Try again!");
+                }
+            } while (!checkTelInput);
+
+            System.out.println("Enter email: ");
             String email = scanner.nextLine();
             if (choice == 1) {
-                System.out.print("Enter bonus");
-                int bonus = Integer.parseInt(scanner.nextLine());
-                System.out.print("Enter fine");
-                int fine = Integer.parseInt(scanner.nextLine());
-                System.out.print("Enter hard salary");
-                int hardSalary = Integer.parseInt(scanner.nextLine());
+
+                boolean checkBonusInput = false;
+                double bonus = 0;
+                do {
+                    try {
+                        System.out.println("Enter bonus: ");
+                        bonus = Integer.parseInt(scanner.nextLine());
+                        checkBonusInput = true;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Wrong input type. Try again!");
+                    }
+                } while (!checkBonusInput);
+
+                boolean checkFineInput = false;
+                double fine = 0;
+                do {
+                    try {
+                        System.out.println("Enter fine: ");
+                        fine = Integer.parseInt(scanner.nextLine());
+                        checkFineInput = true;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Wrong input type. Try again!");
+                    }
+                } while (!checkFineInput);
+
+                boolean checkHardSalaryInput = false;
+                int hardSalary = 0;
+                do {
+                    try {
+                        System.out.println("Enter hard salary: ");
+                        hardSalary = Integer.parseInt(scanner.nextLine());
+                        checkHardSalaryInput = true;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Wrong input type. Try again!");
+                    }
+                } while (!checkHardSalaryInput);
+
                 employees.add(new FullTimeEmployee(id, name, age, tel, email, bonus, fine, hardSalary));
             } else {
-                System.out.print("Enter work hours");
-                int workHours = Integer.parseInt(scanner.nextLine());
+
+                boolean checkWorkHoursInput = false;
+                double workHours = 0;
+                do {
+                    try {
+                        System.out.println("Enter work hours: ");
+                        workHours = Integer.parseInt(scanner.nextLine());
+                        checkWorkHoursInput = true;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Wrong input type. Try again!");
+                    }
+                } while (!checkWorkHoursInput);
+
                 employees.add(new PartTimeEmployee(id, name, age, tel, email, workHours));
             }
             System.out.println("New employee data added successfully!");
@@ -56,49 +130,160 @@ public class EmployeeManagementSystem {
         }
     }
 
-    public int averageSalary() {
-        if (employees.isEmpty()) {
-            return 0;
-        }
-        int total = 0;
-        for (Employee e : employees) {
-            if (e instanceof FullTimeEmployee) {
-                total += ((FullTimeEmployee) e).netSalary();
-            } else if (e instanceof PartTimeEmployee) {
-                total += ((PartTimeEmployee) e).netWage();
+    public void remove(int choice, Scanner scanner) {
+        if (choice < 0 || choice > 2) {
+            System.err.println("Invalid choice. Try again!");
+        } else {
+            if (choice == 1) {
+                removeAll();
+                System.out.println("Remove all employees successfully!");
+            } else {
+                removeByID(scanner);
             }
+            writeToFile();
         }
-        int averageSalary = total / employees.size();
-        return averageSalary;
     }
 
-    public void findBelowAverageSalary() {
-        if (employees.isEmpty()) {
-            System.out.println("The list is EMPTY now!");
+
+    private void removeAll() {
+        employees.removeAll(employees);
+    }
+
+    private void removeByID(Scanner scanner) {
+        System.out.println("Enter id of employee to remove:");
+        String id = scanner.nextLine();
+        int index = findIndexById(id);
+        if (index == -1) {
+            System.err.println(id + " Id is not found!");
         } else {
+            System.out.println(employees.get(index));
+            System.out.println(" is removed successfully!");
+            employees.remove(index);
+        }
+    }
+
+    public void update(Scanner scanner) {
+        System.out.println("Enter Id:");
+        String id = scanner.nextLine();
+        if (!checkIdExist(id)) {
+            System.err.println("Id " + id + " is not existed!");
+        } else {
+            String newId;
+            do {
+                System.out.println("Update Id:");
+                newId = scanner.nextLine();
+                if (checkIdExist(newId)) {
+                    System.out.println("Id is already existed!");
+                } else if (newId.contains(" ")) {
+                    System.out.println("Try input a valid Id!");
+                } else if (!newId.equals("")) {
+                    employees.get(findIndexById(id)).setId(newId);
+                }
+            } while (checkIdExist(newId) || newId.contains(" "));
+            System.out.println("Update name:");
+            String name = scanner.nextLine();
+            if (!name.equals("")) {
+                employees.get(findIndexById(id)).setName(name);
+            }
+            System.out.println("Update age:");
+            String age = scanner.nextLine();
+            if (!age.equals("")) {
+                employees.get(findIndexById(id)).setAge(Integer.parseInt(age));
+            }
+            System.out.println("Update tel:");
+            String tel = scanner.nextLine();
+            if (!tel.equals("")) {
+                employees.get(findIndexById(id)).setTel(Integer.parseInt(tel));
+            }
+            System.out.println("Update email:");
+            String email = scanner.nextLine();
+            if (!email.equals("")) {
+                employees.get(findIndexById(id)).setEmail(email);
+            }
+            if (employees.get(findIndexById(id)) instanceof FullTimeEmployee) {
+                System.out.println("Update bonus:");
+                String bonus = scanner.nextLine();
+                if (!bonus.equals("")) {
+                    ((FullTimeEmployee) employees.get(findIndexById(id))).setBonus(Double.parseDouble(bonus));
+                }
+                System.out.println("Update fine:");
+                String fine = scanner.nextLine();
+                if (!fine.equals("")) {
+                    ((FullTimeEmployee) employees.get(findIndexById(id))).setFine(Double.parseDouble(fine));
+                }
+                System.out.println("Update hard salary:");
+                String hardSalary = scanner.nextLine();
+                if (!hardSalary.equals("")) {
+                    ((FullTimeEmployee) employees.get(findIndexById(id))).setHardSalary(Double.parseDouble(hardSalary));
+                }
+            } else if (employees.get(findIndexById(id)) instanceof PartTimeEmployee) {
+                System.out.println("Update work hours:");
+                String workHours = scanner.nextLine();
+                if (!workHours.equals("")) {
+                    ((PartTimeEmployee) employees.get(findIndexById(id))).setWorkHours(Double.parseDouble(workHours));
+                }
+            }
+        }
+        System.out.println("Updated successfully!");
+        writeToFile();
+    }
+
+    public int averageSalary() {
+        if (employees.isEmpty()) {
+            System.err.println("The list is EMPTY now. Try to add an employee first!");
+            return 0;
+        } else {
+            int total = 0;
+            for (Employee e : employees) {
+                if (e instanceof FullTimeEmployee) {
+                    total += ((FullTimeEmployee) e).netSalary();
+                } else if (e instanceof PartTimeEmployee) {
+                    total += ((PartTimeEmployee) e).netWage();
+                }
+            }
+            return total / employees.size();
+        }
+    }
+
+    public void findBelowAverageSalaryFullTimeEmployees() {
+        if (employees.isEmpty()) {
+            System.err.println("The list is EMPTY now. Try to add an employee first!");
+        } else {
+            System.out.println("Average Salary is " + averageSalary());
+            System.out.printf("%-10s%-10s%-10s%-15s%-20s%-20s%s",
+                    "ID","Type", "Name", "Age", "Tel", "Email","Wage\n");
             for (Employee e : employees) {
                 if (e instanceof FullTimeEmployee && ((FullTimeEmployee) e).getHardSalary() < averageSalary()) {
-                    System.out.println(e);
+                    System.out.printf("%-10s%-10s%-10s%-15s%-20s%-20s%s",
+                            e.getId(), "Full-time", e.getName(), e.getAge(), e.getTel(), e.getEmail(),
+                            ((FullTimeEmployee) e).getHardSalary() + "\n");
                 }
             }
         }
     }
 
-    public int sumSalaryOfPartTimeEmployees() {
-        int total = 0;
+    public void calculateTotalSalaryOfPartTimeEmployees() {
+        ArrayList<PartTimeEmployee> partTimeEmployees = new ArrayList<>();
         for (Employee e : employees) {
             if (e instanceof PartTimeEmployee) {
-                total += ((PartTimeEmployee) e).netWage();
+                partTimeEmployees.add((PartTimeEmployee) e);
             }
         }
-        return total;
+        if (partTimeEmployees.isEmpty()) {
+            System.err.println("There are not any part-time employees. Try to add an employee first!");
+        } else {
+            int total = 0;
+            for (PartTimeEmployee e : partTimeEmployees) {
+                total += e.netWage();
+            }
+            System.out.println("Total Salary paid to Part-time employees is " + total);
+        }
     }
 
     public void displayFullTimeEmployeesByAscendingNetSalary() {
         if (employees.isEmpty()) {
-            System.out.println("The list is EMPTY now!");
+            System.err.println("The list is EMPTY now. Try to add an employee first!");
         } else {
-            NetSalaryComparator ascending = new NetSalaryComparator();
 
             ArrayList<FullTimeEmployee> fullTimeEmployees = new ArrayList<>();
             for (Employee e : employees) {
@@ -108,25 +293,25 @@ public class EmployeeManagementSystem {
             }
 
             if (fullTimeEmployees.isEmpty()) {
-                System.out.println("There are not any full-time employees");
+                System.err.println("There are not any full-time employees. Try to add an employee first!");
             } else {
-                fullTimeEmployees.sort(ascending);
+                fullTimeEmployees.sort(FullTimeEmployee::compareTo);
+                System.out.printf("%-10s%-10s%-10s%-15s%-20s%-20s%s",
+                        "ID","Type", "Name", "Age", "Tel", "Email","Wage\n");
                 for (FullTimeEmployee e : fullTimeEmployees) {
-                    System.out.println(e);
+                    System.out.printf("%-10s%-10s%-10s%-15s%-20s%-20s%s",
+                            e.getId(), "Full-time", e.getName(), e.getAge(), e.getTel(), e.getEmail(),
+                            ((FullTimeEmployee) e).getHardSalary() + "\n");
                 }
             }
         }
     }
 
     private void writeToFile() {
-        File file = new File("D:\\Code Gym\\CodeGym_GitHub_Module2\\Mini Test\\src\\mini_test_2_3\\EmployeesList.txt");
         try {
-            if (!file.exists()){
-                file.createNewFile();
-            }
-            FileOutputStream outputFile = new FileOutputStream(file);
+            FileOutputStream outputFile = new FileOutputStream("Mini Test/src/mini_test_2_3/EmployeesList.txt");
             ObjectOutputStream oos = new ObjectOutputStream(outputFile);
-            oos.writeObject(employees);
+            oos.writeObject(this.getEmployees());
             oos.close();
             outputFile.close();
         } catch (Exception e) {
@@ -137,12 +322,14 @@ public class EmployeeManagementSystem {
     private ArrayList<Employee> readFromFile() {
         ArrayList<Employee> employeesList = new ArrayList<>();
         try {
-            FileInputStream inputFile = new FileInputStream("D:\\Code Gym\\CodeGym_GitHub_Module2\\Mini Test\\src\\mini_test_2_3\\EmployeesList.txt");
-            ObjectInputStream ois = new ObjectInputStream(inputFile);
-            employeesList = (ArrayList<Employee>) ois.readObject();
-            ois.close();
-            inputFile.close();
-        } catch (Exception e) {
+            FileInputStream inputFile = new FileInputStream("Mini Test/src/mini_test_2_3/EmployeesList.txt");
+            if (inputFile.available() > 0) {
+                ObjectInputStream ois = new ObjectInputStream(inputFile);
+                employeesList = (ArrayList<Employee>) ois.readObject();
+                ois.close();
+                inputFile.close();
+            }
+        } catch (IOException | ClassNotFoundException e) {
             System.out.print("");
         }
         return employeesList;
@@ -151,11 +338,41 @@ public class EmployeeManagementSystem {
 
     public void display() {
         if (employees.isEmpty()) {
-            System.out.println("The list is EMPTY now!");
-        }
-        for (Employee e : employees) {
-            System.out.println(e);
+            System.err.println("The list is EMPTY now. Try add first!");
+        } else {
+            System.out.printf("%-10s%-10s%-10s%-15s%-20s%-20s%s",
+                    "ID","Type", "Name", "Age", "Tel", "Email","Wage\n");
+            for (Employee e : employees) {
+                if (e instanceof FullTimeEmployee) {
+                    System.out.printf("%-10s%-10s%-10s%-15s%-20s%-20s%s",
+                            e.getId(), "Full-time", e.getName(), e.getAge(), e.getTel(), e.getEmail(),
+                            ((FullTimeEmployee) e).getHardSalary() + "\n");
+                } else if (e instanceof PartTimeEmployee){
+                    System.out.printf("%-10s%-10s%-10s%-15s%-20s%-20s%s",
+                    e.getId(),"Part-time", e.getName(), e.getAge(), e.getTel(), e.getEmail(),
+                            ((PartTimeEmployee) e).netWage() + "\n");
+                }
+//                System.out.println(e);
+            }
         }
     }
 
+    private int findIndexById(String id) {
+        int index = -1;
+        for (Employee e : employees) {
+            if (e.getId().equals(id)) {
+                index = employees.indexOf(e);
+            }
+        }
+        return index;
+    }
+
+    private boolean checkIdExist(String id) {
+        for (Employee e : employees) {
+            if (e.getId().equals(id)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

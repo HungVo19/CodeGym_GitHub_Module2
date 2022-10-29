@@ -1,23 +1,23 @@
 package mini_test_2_3;
 
 public class PartTimeEmployee extends Employee {
-    private int workHours;
+    private double workHours;
 
-    public PartTimeEmployee(String id, String name, int age, int tel, String email, int workHours) {
+    public PartTimeEmployee(String id, String name, int age, int tel, String email, double workHours) {
         super(id, name, age, tel, email);
         this.workHours = workHours;
     }
 
-    public int getWorkHours() {
+    public double getWorkHours() {
         return workHours;
     }
 
-    public void setWorkHours(int workHours) {
+    public void setWorkHours(double workHours) {
         this.workHours = workHours;
     }
 
-    public int netWage() {
-        return workHours * 1000;
+    public double netWage() {
+        return workHours * 10000;
     }
 
     @Override
@@ -27,7 +27,7 @@ public class PartTimeEmployee extends Employee {
                 ", age = " + super.getName() +
                 ", tel = " + super.getTel() +
                 ", email = " + super.getEmail() +
-                ", work hours =" + this.workHours +
+                ", work hours = " + this.workHours +
                 ", net wage = " + this.netWage() +
                 " }";
     }
