@@ -1,4 +1,4 @@
-package write_products_list_to_binary_file;
+package read_write_student_list_to_binary_file.write_products_list_to_binary_file;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -38,7 +38,6 @@ public class Menu {
         if (!(products.isEmpty())) {
             pm.setProducts(products);
         }
-//        System.out.println(products);
 
         do {
             System.out.println("Menu");
@@ -50,6 +49,7 @@ public class Menu {
             System.out.println("0.Exit");
             int choice = -1;
             try {
+                System.out.println("Enter your choice:");
                 choice = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
                 System.err.println("Wrong input type. Try again!");

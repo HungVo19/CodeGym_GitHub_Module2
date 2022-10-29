@@ -6,7 +6,6 @@ public class Menu {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         EmployeeManagementSystem managementSystem = new EmployeeManagementSystem();
-
         do {
             System.out.println("Menu");
             System.out.println("1. Display all employees");
@@ -16,8 +15,17 @@ public class Menu {
             System.out.println("5. Calculate total salary of all part-time employees");
             System.out.println("6. Display all full-time employees by ascending net salary");
             System.out.println("0. Exit");
-            System.out.println("Enter your choice");
-            int choice = Integer.parseInt(scanner.nextLine());
+            boolean checkChoiceInput = false;
+            int choice = -1;
+            do {
+                try {
+                    System.out.println("Enter your choice:");
+                    choice = Integer.parseInt(scanner.nextLine());
+                    checkChoiceInput = true;
+                } catch (NumberFormatException e) {
+                    System.err.println("Wrong input type. Try again!");
+                }
+            } while (!checkChoiceInput);
             switch (choice) {
                 case 1:
                     managementSystem.display();

@@ -42,8 +42,6 @@ public class FullTimeEmployee extends Employee implements Comparable<FullTimeEmp
         return this.hardSalary + (this.bonus - this.fine);
     }
 
-
-
     @Override
     public String toString() {
         return " FullTimeEmployee { id = " + super.getId() +

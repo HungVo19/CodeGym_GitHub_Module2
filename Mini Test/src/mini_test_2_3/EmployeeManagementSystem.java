@@ -1,5 +1,6 @@
 package mini_test_2_3;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -8,7 +9,7 @@ public class EmployeeManagementSystem {
     private ArrayList<Employee> employees;
 
     public EmployeeManagementSystem() {
-        employees = new ArrayList<>();
+        employees = readFromFile();
     }
 
     public EmployeeManagementSystem(ArrayList<Employee> employees) {
@@ -38,24 +39,25 @@ public class EmployeeManagementSystem {
             System.out.print("Enter email:");
             String email = scanner.nextLine();
             if (choice == 1) {
-                System.out.println("Enter bonus");
+                System.out.print("Enter bonus");
                 int bonus = Integer.parseInt(scanner.nextLine());
-                System.out.println("Enter fine");
+                System.out.print("Enter fine");
                 int fine = Integer.parseInt(scanner.nextLine());
-                System.out.println("Enter hard salary");
+                System.out.print("Enter hard salary");
                 int hardSalary = Integer.parseInt(scanner.nextLine());
                 employees.add(new FullTimeEmployee(id, name, age, tel, email, bonus, fine, hardSalary));
             } else {
-                System.out.println("Enter work hours");
+                System.out.print("Enter work hours");
                 int workHours = Integer.parseInt(scanner.nextLine());
                 employees.add(new PartTimeEmployee(id, name, age, tel, email, workHours));
             }
             System.out.println("New employee data added successfully!");
+            writeToFile();
         }
     }
 
     public int averageSalary() {
-        if (employees.isEmpty()){
+        if (employees.isEmpty()) {
             return 0;
         }
         int total = 0;
@@ -115,6 +117,37 @@ public class EmployeeManagementSystem {
             }
         }
     }
+
+    private void writeToFile() {
+        File file = new File("D:\\Code Gym\\CodeGym_GitHub_Module2\\Mini Test\\src\\mini_test_2_3\\EmployeesList.txt");
+        try {
+            if (!file.exists()){
+                file.createNewFile();
+            }
+            FileOutputStream outputFile = new FileOutputStream(file);
+            ObjectOutputStream oos = new ObjectOutputStream(outputFile);
+            oos.writeObject(employees);
+            oos.close();
+            outputFile.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private ArrayList<Employee> readFromFile() {
+        ArrayList<Employee> employeesList = new ArrayList<>();
+        try {
+            FileInputStream inputFile = new FileInputStream("D:\\Code Gym\\CodeGym_GitHub_Module2\\Mini Test\\src\\mini_test_2_3\\EmployeesList.txt");
+            ObjectInputStream ois = new ObjectInputStream(inputFile);
+            employeesList = (ArrayList<Employee>) ois.readObject();
+            ois.close();
+            inputFile.close();
+        } catch (Exception e) {
+            System.out.print("");
+        }
+        return employeesList;
+    }
+
 
     public void display() {
         if (employees.isEmpty()) {
