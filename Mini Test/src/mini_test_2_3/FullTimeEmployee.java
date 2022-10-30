@@ -5,7 +5,7 @@ public class FullTimeEmployee extends Employee implements Comparable<FullTimeEmp
     private double fine;
     private double hardSalary;
 
-    public FullTimeEmployee(String id, String name, int age, int tel, String email, double bonus, double fine, double hardSalary) {
+    public FullTimeEmployee(String id, String name, int age, String tel, String email, double bonus, double fine, double hardSalary) {
         super(id, name, age, tel, email);
         this.bonus = bonus;
         this.fine = fine;

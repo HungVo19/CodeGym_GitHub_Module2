@@ -3,7 +3,7 @@ package mini_test_2_3;
 public class PartTimeEmployee extends Employee {
     private double workHours;
 
-    public PartTimeEmployee(String id, String name, int age, int tel, String email, double workHours) {
+    public PartTimeEmployee(String id, String name, int age, String tel, String email, double workHours) {
         super(id, name, age, tel, email);
         this.workHours = workHours;
     }

@@ -6,10 +6,10 @@ public class Employee implements Serializable {
     private String id;
     private String name;
     private int age;
-    private int tel;
+    private String tel;
     private String email;
 
-    public Employee(String id, String name, int age, int tel, String email) {
+    public Employee(String id, String name, int age, String tel, String email) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -41,11 +41,11 @@ public class Employee implements Serializable {
         this.age = age;
     }
 
-    public int getTel() {
+    public String getTel() {
         return tel;
     }
 
-    public void setTel(int tel) {
+    public void setTel(String tel) {
         this.tel = tel;
     }
 
