@@ -251,7 +251,7 @@ public class EmployeeManagementSystem {
         } else {
             System.out.println("Average Salary is " + averageSalary());
             System.out.printf("%-10s%-10s%-10s%-15s%-20s%-20s%s",
-                    "ID","Type", "Name", "Age", "Tel", "Email","Wage\n");
+                    "ID", "Type", "Name", "Age", "Tel", "Email", "Wage\n");
             for (Employee e : employees) {
                 if (e instanceof FullTimeEmployee && ((FullTimeEmployee) e).getHardSalary() < averageSalary()) {
                     System.out.printf("%-10s%-10s%-10s%-15s%-20s%-20s%s",
@@ -297,7 +297,7 @@ public class EmployeeManagementSystem {
             } else {
                 fullTimeEmployees.sort(FullTimeEmployee::compareTo);
                 System.out.printf("%-10s%-10s%-10s%-15s%-20s%-20s%s",
-                        "ID","Type", "Name", "Age", "Tel", "Email","Wage\n");
+                        "ID", "Type", "Name", "Age", "Tel", "Email", "Wage\n");
                 for (FullTimeEmployee e : fullTimeEmployees) {
                     System.out.printf("%-10s%-10s%-10s%-15s%-20s%-20s%s",
                             e.getId(), "Full-time", e.getName(), e.getAge(), e.getTel(), e.getEmail(),
@@ -340,16 +340,20 @@ public class EmployeeManagementSystem {
         if (employees.isEmpty()) {
             System.err.println("The list is EMPTY now. Try add first!");
         } else {
-            System.out.printf("%-10s%-10s%-10s%-15s%-20s%-20s%s",
-                    "ID","Type", "Name", "Age", "Tel", "Email","Wage\n");
+            System.out.printf("%-5s%-15s%-10s%-10s%-15s%-20s%-18s%-20s%-20s%-25s%-25s%s",
+                    "ID", "Type", "Name", "Age", "Tel", "Email", "Bonus", "Fine", "Hard Salary", "Net Salary", "Work Hours", "Net Wage\n");
             for (Employee e : employees) {
                 if (e instanceof FullTimeEmployee) {
-                    System.out.printf("%-10s%-10s%-10s%-15s%-20s%-20s%s",
+                    System.out.printf("%-5s%-15s%-10s%-10s%-15s%-20s%-18s%-20s%-20s%-25s%-25s%s",
                             e.getId(), "Full-time", e.getName(), e.getAge(), e.getTel(), e.getEmail(),
-                            ((FullTimeEmployee) e).getHardSalary() + "\n");
-                } else if (e instanceof PartTimeEmployee){
-                    System.out.printf("%-10s%-10s%-10s%-15s%-20s%-20s%s",
-                    e.getId(),"Part-time", e.getName(), e.getAge(), e.getTel(), e.getEmail(),
+                            ((FullTimeEmployee) e).getBonus(), ((FullTimeEmployee) e).getFine(),
+                            ((FullTimeEmployee) e).getHardSalary(),
+                            ((FullTimeEmployee) e).netSalary(),
+                            "na", "na" + "\n");
+                } else if (e instanceof PartTimeEmployee) {
+                    System.out.printf("%-5s%-15s%-10s%-10s%-15s%-20s%-18s%-20s%-20s%-25s%-25s%s",
+                            e.getId(), "Part-time", e.getName(), e.getAge(), e.getTel(), e.getEmail(),
+                            "na", "na", "na", "na", ((PartTimeEmployee) e).getWorkHours(),
                             ((PartTimeEmployee) e).netWage() + "\n");
                 }
 //                System.out.println(e);
