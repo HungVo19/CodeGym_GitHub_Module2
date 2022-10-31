@@ -16,9 +16,14 @@ public class PartTimeEmployee extends Employee {
         this.workHours = workHours;
     }
 
-    public double netWage() {
+    @Override
+    public double getNetSalary() {
         return workHours * 10000;
     }
+
+//    public double netWage() {
+//        return workHours * 10000;
+//    }
 
     @Override
     public String toString() {
@@ -28,7 +33,7 @@ public class PartTimeEmployee extends Employee {
                 ", tel = " + super.getTel() +
                 ", email = " + super.getEmail() +
                 ", work hours = " + this.workHours +
-                ", net wage = " + this.netWage() +
+                ", net wage = " + this.getNetSalary() +
                 " }";
     }
 }

@@ -7,7 +7,7 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         EmployeeManagementSystem managementSystem = new EmployeeManagementSystem();
         do {
-            System.err.println("Menu");
+            System.out.println("Menu");
             System.out.println("1. Display all employees");
             System.out.println("2. Add new employee");
             System.out.println("3. Remove employee");
@@ -25,7 +25,7 @@ public class Menu {
                     choice = Integer.parseInt(scanner.nextLine());
                     checkChoiceInput = true;
                 } catch (NumberFormatException e) {
-                    System.err.println("Wrong input type. Try again!");
+                    System.out.println("Wrong input type. Try again!");
                 }
             } while (!checkChoiceInput);
             switch (choice) {
@@ -45,7 +45,7 @@ public class Menu {
                                 choice1 = Integer.parseInt(scanner.nextLine());
                                 checkChoice1Input = true;
                             } catch (NumberFormatException e) {
-                                System.err.println("Wrong input type. Try again!");
+                                System.out.println("Wrong input type. Try again!");
                             }
                         } while (!checkChoice1Input);
                         if (choice1 == 0) {
@@ -56,7 +56,7 @@ public class Menu {
                     break;
                 case 3:
                     if(managementSystem.getEmployees().isEmpty()){
-                        System.err.println("The list is EMPTY now. Try to add an employee first!");
+                        System.out.println("The list is EMPTY now. Try to add an employee first!");
                         break;
                     }
                     do {
@@ -71,7 +71,7 @@ public class Menu {
                                 choice3 = Integer.parseInt(scanner.nextLine());
                                 checkChoice3Input = true;
                             } catch (NumberFormatException e) {
-                                System.err.println("Wrong input type. Try again");
+                                System.out.println("Wrong input type. Try again");
                             }
                         } while (!checkChoice3Input);
                         if (choice3 == 0) {
@@ -82,7 +82,7 @@ public class Menu {
                     break;
                 case 4:
                     if(managementSystem.getEmployees().isEmpty()){
-                        System.err.println("The list is EMPTY now. Try to add an employee first!");
+                        System.out.println("The list is EMPTY now. Try to add an employee first!");
                         break;
                     }
                     managementSystem.update(scanner);

@@ -2,7 +2,7 @@ package mini_test_2_3;
 
 import java.io.Serializable;
 
-public class Employee implements Serializable {
+public abstract class Employee implements Serializable {
     private String id;
     private String name;
     private int age;
@@ -61,4 +61,6 @@ public class Employee implements Serializable {
     public String toString() {
         return super.toString();
     }
+
+    public abstract double getNetSalary();
 }

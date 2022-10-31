@@ -27,17 +27,17 @@ public class EmployeeManagementSystem {
 
     public void add(int choice, Scanner scanner) {
         if (choice < 0 || choice > 2) {
-            System.err.println("Invalid choice. Try again!");
+            System.out.println("Invalid choice. Try again!");
         } else {
             String id = "";
             do {
                 System.out.println("Enter id: ");
                 id = scanner.nextLine();
                 if (checkIdExist(id)) {
-                    System.err.println("Id " + id + " is already existed. Please Input new Id!");
+                    System.out.println("Id " + id + " is already existed. Please Input new Id!");
                 }
                 if (id.isEmpty() || id.contains(" ")) {
-                    System.err.println("Please enter valid Id");
+                    System.out.println("Please enter valid Id");
                 }
             } while (checkIdExist(id) || id.isEmpty() || id.contains(" "));
 
@@ -46,7 +46,7 @@ public class EmployeeManagementSystem {
                 System.out.println("Enter name: ");
                 name = scanner.nextLine();
                 if (name.isEmpty()){
-                    System.err.println("Name cannot be empty!");
+                    System.out.println("Name cannot be empty!");
                 }
             }
             while (name.isEmpty());
@@ -130,7 +130,7 @@ public class EmployeeManagementSystem {
 
     public void remove(int choice, Scanner scanner) {
         if (choice < 0 || choice > 2) {
-            System.err.println("Invalid choice. Try again!");
+            System.out.println("Invalid choice. Try again!");
         } else {
             if (choice == 1) {
                 removeAll();
@@ -144,7 +144,7 @@ public class EmployeeManagementSystem {
 
 
     private void removeAll() {
-        employees.removeAll(employees);
+        employees.clear();
     }
 
     private void removeByID(Scanner scanner) {
@@ -152,7 +152,7 @@ public class EmployeeManagementSystem {
         String id = scanner.nextLine();
         int index = findIndexById(id);
         if (index == -1) {
-            System.err.println(id + " Id is not found!");
+            System.out.println(id + " Id is not found!");
         } else {
             System.out.println(employees.get(index));
             System.out.println(" is removed successfully!");
@@ -161,20 +161,19 @@ public class EmployeeManagementSystem {
     }
 
     public void update(Scanner scanner) {
-//        try {
         System.out.println("Enter Id:");
         String id = scanner.nextLine();
         if (!checkIdExist(id)) {
-            System.err.println("Id " + id + " is not existed!");
+            System.out.println("Id " + id + " is not existed!");
         } else {
             String newId;
             do {
                 System.out.println("Update Id:");
                 newId = scanner.nextLine();
                 if (checkIdExist(newId)) {
-                    System.err.println("Id is already existed!");
+                    System.out.println("Id is already existed!");
                 } else if (newId.contains(" ")) {
-                    System.err.println("Try input a valid Id!");
+                    System.out.println("Try input a valid Id!");
                 } else if (!newId.equals("")) {
                     employees.get(findIndexById(id)).setId(newId);
                 }
@@ -225,23 +224,16 @@ public class EmployeeManagementSystem {
         }
         System.out.println("Updated successfully!");
         writeToFile();
-//        } catch (Exception e) {
-//            System.out.println("");
-//        }
     }
 
     public int averageSalary() {
         if (employees.isEmpty()) {
-            System.err.println("The list is EMPTY now. Try to add an employee first!");
+            System.out.println("The list is EMPTY now. Try to add an employee first!");
             return 0;
         } else {
             int total = 0;
             for (Employee e : employees) {
-                if (e instanceof FullTimeEmployee) {
-                    total += ((FullTimeEmployee) e).netSalary();
-                } else if (e instanceof PartTimeEmployee) {
-                    total += ((PartTimeEmployee) e).netWage();
-                }
+                total += e.getNetSalary();
             }
             return total / employees.size();
         }
@@ -249,16 +241,18 @@ public class EmployeeManagementSystem {
 
     public void findBelowAverageSalaryFullTimeEmployees() {
         if (employees.isEmpty()) {
-            System.err.println("The list is EMPTY now. Try to add an employee first!");
+            System.out.println("The list is EMPTY now. Try to add an employee first!");
         } else {
             System.out.println("Average Salary is " + averageSalary());
-            System.out.printf("%-10s%-10s%-10s%-15s%-20s%-20s%s",
-                    "ID", "Type", "Name", "Age", "Tel", "Email", "Wage\n");
+            System.out.printf("%-5s%-15s%-10s%-10s%-35s%-15s%-15s%-15s%-15s%s",
+                    "ID", "Type", "Name", "Age", "Tel", "Email", "Bonus", "Fine", "Hard Salary", "Net Salary\n");
             for (Employee e : employees) {
-                if (e instanceof FullTimeEmployee && ((FullTimeEmployee) e).getHardSalary() < averageSalary()) {
-                    System.out.printf("%-10s%-10s%-10s%-15s%-20s%-20s%s",
+                if (e instanceof FullTimeEmployee && e.getNetSalary() < averageSalary()) {
+                    System.out.printf("%-5s%-15s%-10s%-10s%-15s%-35s%-15s%-15s%-15s%s",
                             e.getId(), "Full-time", e.getName(), e.getAge(), e.getTel(), e.getEmail(),
-                            ((FullTimeEmployee) e).getHardSalary() + "\n");
+                            ((FullTimeEmployee) e).getBonus(), ((FullTimeEmployee) e).getFine(),
+                            ((FullTimeEmployee) e).getHardSalary(),
+                            e.getNetSalary() + "\n");
                 }
             }
         }
@@ -272,11 +266,11 @@ public class EmployeeManagementSystem {
             }
         }
         if (partTimeEmployees.isEmpty()) {
-            System.err.println("There are not any part-time employees. Try to add an employee first!");
+            System.out.println("There are not any part-time employees. Try to add an employee first!");
         } else {
             int total = 0;
             for (PartTimeEmployee e : partTimeEmployees) {
-                total += e.netWage();
+                total += e.getNetSalary();
             }
             System.out.println("Total Salary paid to Part-time employees is " + total);
         }
@@ -284,7 +278,7 @@ public class EmployeeManagementSystem {
 
     public void displayFullTimeEmployeesByAscendingNetSalary() {
         if (employees.isEmpty()) {
-            System.err.println("The list is EMPTY now. Try to add an employee first!");
+            System.out.println("The list is EMPTY now. Try to add an employee first!");
         } else {
 
             ArrayList<FullTimeEmployee> fullTimeEmployees = new ArrayList<>();
@@ -295,15 +289,17 @@ public class EmployeeManagementSystem {
             }
 
             if (fullTimeEmployees.isEmpty()) {
-                System.err.println("There are not any full-time employees. Try to add an employee first!");
+                System.out.println("There are not any full-time employees. Try to add an employee first!");
             } else {
                 fullTimeEmployees.sort(FullTimeEmployee::compareTo);
-                System.out.printf("%-10s%-10s%-10s%-15s%-20s%-20s%s",
-                        "ID", "Type", "Name", "Age", "Tel", "Email", "Wage\n");
+                System.out.printf("%-5s%-15s%-10s%-10s%-35s%-15s%-15s%-15s%-15s%s",
+                        "ID", "Type", "Name", "Age", "Tel", "Email", "Bonus", "Fine", "Hard Salary", "Net Salary\n");
                 for (FullTimeEmployee e : fullTimeEmployees) {
-                    System.out.printf("%-10s%-10s%-10s%-15s%-20s%-20s%s",
+                    System.out.printf("%-5s%-15s%-10s%-10s%-15s%-35s%-15s%-15s%-15s%s",
                             e.getId(), "Full-time", e.getName(), e.getAge(), e.getTel(), e.getEmail(),
-                            ((FullTimeEmployee) e).getHardSalary() + "\n");
+                            e.getBonus(), e.getFine(),
+                            e.getHardSalary(),
+                            e.getNetSalary() + "\n");
                 }
             }
         }
@@ -340,25 +336,23 @@ public class EmployeeManagementSystem {
 
     public void display() {
         if (employees.isEmpty()) {
-            System.err.println("The list is EMPTY now. Try add first!");
+            System.out.println("The list is EMPTY now. Try add first!");
         } else {
-            System.out.printf("%-5s%-15s%-10s%-10s%-15s%-35s%-15s%-15s%-15s%-15s%-15s%s",
-                    "ID", "Type", "Name", "Age", "Tel", "Email", "Bonus", "Fine", "Hard Salary", "Net Salary", "Work Hours", "Net Wage\n");
+            System.out.printf("%-5s%-15s%-10s%-10s%-15s%-35s%-15s%-15s%-15s%-15s%s",
+                    "ID", "Type", "Name", "Age", "Tel", "Email", "Bonus", "Fine", "Hard Salary", "Work Hours", "Net Salary\n");
             for (Employee e : employees) {
                 if (e instanceof FullTimeEmployee) {
-                    System.out.printf("%-5s%-15s%-10s%-10s%-15s%-35s%-15s%-15s%-15s%-15s%-15s%s",
+                    System.out.printf("%-5s%-15s%-10s%-10s%-15s%-35s%-15s%-15s%-15s%-15s%s",
                             e.getId(), "Full-time", e.getName(), e.getAge(), e.getTel(), e.getEmail(),
                             ((FullTimeEmployee) e).getBonus(), ((FullTimeEmployee) e).getFine(),
-                            ((FullTimeEmployee) e).getHardSalary(),
-                            ((FullTimeEmployee) e).netSalary(),
-                            "na", "na" + "\n");
+                            ((FullTimeEmployee) e).getHardSalary(), "na",
+                            e.getNetSalary() + "\n");
                 } else if (e instanceof PartTimeEmployee) {
-                    System.out.printf("%-5s%-15s%-10s%-10s%-15s%-35s%-15s%-15s%-15s%-15s%-15s%s",
+                    System.out.printf("%-5s%-15s%-10s%-10s%-15s%-35s%-15s%-15s%-15s%-15s%s",
                             e.getId(), "Part-time", e.getName(), e.getAge(), e.getTel(), e.getEmail(),
-                            "na", "na", "na", "na", ((PartTimeEmployee) e).getWorkHours(),
-                            ((PartTimeEmployee) e).netWage() + "\n");
+                            "na", "na","na", ((PartTimeEmployee) e).getWorkHours(),
+                            e.getNetSalary() + "\n");
                 }
-//                System.out.println(e);
             }
         }
     }

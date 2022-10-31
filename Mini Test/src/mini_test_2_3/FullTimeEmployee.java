@@ -36,9 +36,15 @@ public class FullTimeEmployee extends Employee implements Comparable<FullTimeEmp
         this.hardSalary = hardSalary;
     }
 
-    public double netSalary () {
+    @Override
+    public double getNetSalary() {
         return this.hardSalary + (this.bonus - this.fine);
+
     }
+
+//    public double netSalary () {
+//        return this.hardSalary + (this.bonus - this.fine);
+//    }
 
     @Override
     public String toString() {
@@ -50,7 +56,7 @@ public class FullTimeEmployee extends Employee implements Comparable<FullTimeEmp
                 ", bonus = " + this.bonus +
                 ", fine = " + this.fine +
                 ", hard Salary =" + this.hardSalary +
-                ", net Salary = " + netSalary() +
+                ", net Salary = " + this.getNetSalary() +
                 " }";
     }
 
@@ -58,8 +64,10 @@ public class FullTimeEmployee extends Employee implements Comparable<FullTimeEmp
     public int compareTo(FullTimeEmployee o) {
         if(this.getHardSalary() > o.getHardSalary()) {
             return 1;
-        } else {
+        } else if (this.getHardSalary() < o.getHardSalary()){
             return -1;
+        } else {
+            return 0;
         }
     }
 }
