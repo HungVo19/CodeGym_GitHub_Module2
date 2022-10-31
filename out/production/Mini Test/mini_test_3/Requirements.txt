@@ -1,0 +1,41 @@
+Tạo lớp Category:
+
+String name
+
+Tạo lớp Product:
+
+Long id
+
+String name
+
+Double price
+
+Integer quantity
+
+Category category
+
+Tạo lớp ProductManager:
+
+1. Phương thức tạo mới 1 Product
+
+2. Phương thức sửa thông tin 1 Product theo id
+
+=> nâng cao: có thể update cả Category
+
+3. Phương thức xóa 1 Product theo id
+
+4. Hiển thị 1 Product theo id
+
+5. Hiển thị tất cả Product
+
+6. Hiển thị tất cả Product theo 1 Category
+
+7. Tính tổng tiền của các Product hiện có
+
+8. Hiển thị các Product có giá tiền > 100000
+
+9. Hiển thị các Product có giá tiền > 200000 và có Category là "Điện tử"
+
+Lớp Main: tạo sẵn 1 danh sách có 3 đối tượng Category để sử dụng
+
+Tạo menu để sử dụng các chức năng của ProductManager
