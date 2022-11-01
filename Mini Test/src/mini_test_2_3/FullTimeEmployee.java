@@ -12,6 +12,10 @@ public class FullTimeEmployee extends Employee implements Comparable<FullTimeEmp
         this.hardSalary = hardSalary;
     }
 
+    public FullTimeEmployee() {
+        super();
+    }
+
     public double getBonus() {
         return bonus;
     }

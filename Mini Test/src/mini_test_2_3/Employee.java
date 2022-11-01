@@ -17,6 +17,10 @@ public abstract class Employee implements Serializable {
         this.email = email;
     }
 
+    public Employee() {
+
+    }
+
     public String getId() {
         return id;
     }

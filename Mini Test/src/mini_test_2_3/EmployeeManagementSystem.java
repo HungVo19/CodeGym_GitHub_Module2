@@ -1,10 +1,14 @@
 package mini_test_2_3;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
+
+import com.bethecoder.ascii_table.impl.CollectionASCIITableAware;
+import com.bethecoder.ascii_table.impl.JDBCASCIITableAware;
+import com.bethecoder.ascii_table.spec.IASCIITableAware;
+import com.bethecoder.ascii_table.ASCIITable;
+import com.bethecoder.ascii_table.ASCIITableHeader;
+import com.jakewharton.fliptables.FlipTableConverters;
 
 public class EmployeeManagementSystem {
     private ArrayList<Employee> employees;
@@ -292,24 +296,18 @@ public class EmployeeManagementSystem {
                 System.out.println("There are not any full-time employees. Try to add an employee first!");
             } else {
                 fullTimeEmployees.sort(FullTimeEmployee::compareTo);
-                System.out.printf("%-5s%-15s%-10s%-10s%-35s%-15s%-15s%-15s%-15s%s",
-                        "ID", "Type", "Name", "Age", "Tel", "Email", "Bonus", "Fine", "Hard Salary", "Net Salary\n");
-                for (FullTimeEmployee e : fullTimeEmployees) {
-                    System.out.printf("%-5s%-15s%-10s%-10s%-15s%-35s%-15s%-15s%-15s%s",
-                            e.getId(), "Full-time", e.getName(), e.getAge(), e.getTel(), e.getEmail(),
-                            e.getBonus(), e.getFine(),
-                            e.getHardSalary(),
-                            e.getNetSalary() + "\n");
+//                System.out.println(FlipTableConverters.fromIterable(fullTimeEmployees,));
                 }
             }
         }
-    }
+
 
     private void writeToFile() {
+        File file = new File("Mini Test/src/mini_test_2_3/EmployeesList.txt");
         try {
-            FileOutputStream outputFile = new FileOutputStream("Mini Test/src/mini_test_2_3/EmployeesList.txt");
+            FileOutputStream outputFile = new FileOutputStream(file);
             ObjectOutputStream oos = new ObjectOutputStream(outputFile);
-            oos.writeObject(this.getEmployees());
+            oos.writeObject(employees);
             oos.close();
             outputFile.close();
         } catch (Exception e) {
@@ -320,7 +318,7 @@ public class EmployeeManagementSystem {
     private ArrayList<Employee> readFromFile() {
         ArrayList<Employee> employeesList = new ArrayList<>();
         try {
-            FileInputStream inputFile = new FileInputStream("Mini Test/src/mini_test_2_3/EmployeesList.txt");
+            FileInputStream inputFile = new FileInputStream("Mini OutputTableTest/src/mini_test_2_3/EmployeesList.txt");
             if (inputFile.available() > 0) {
                 ObjectInputStream ois = new ObjectInputStream(inputFile);
                 employeesList = (ArrayList<Employee>) ois.readObject();
