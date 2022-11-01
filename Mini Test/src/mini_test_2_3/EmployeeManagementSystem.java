@@ -1,14 +1,10 @@
 package mini_test_2_3;
 
+import com.jakewharton.fliptables.FlipTableConverters;
+
 import java.io.*;
 import java.util.*;
 
-import com.bethecoder.ascii_table.impl.CollectionASCIITableAware;
-import com.bethecoder.ascii_table.impl.JDBCASCIITableAware;
-import com.bethecoder.ascii_table.spec.IASCIITableAware;
-import com.bethecoder.ascii_table.ASCIITable;
-import com.bethecoder.ascii_table.ASCIITableHeader;
-import com.jakewharton.fliptables.FlipTableConverters;
 
 public class EmployeeManagementSystem {
     private ArrayList<Employee> employees;
@@ -49,7 +45,7 @@ public class EmployeeManagementSystem {
             do {
                 System.out.println("Enter name: ");
                 name = scanner.nextLine();
-                if (name.isEmpty()){
+                if (name.isEmpty()) {
                     System.out.println("Name cannot be empty!");
                 }
             }
@@ -248,15 +244,15 @@ public class EmployeeManagementSystem {
             System.out.println("The list is EMPTY now. Try to add an employee first!");
         } else {
             System.out.println("Average Salary is " + averageSalary());
-            System.out.printf("%-5s%-15s%-10s%-10s%-35s%-15s%-15s%-15s%-15s%s",
+            System.out.printf("|%-5s|%-10s|%-10s|%-10s|%-15s|%-15s|%-15s|%-15s|%-15s|%-15s%n|",
                     "ID", "Type", "Name", "Age", "Tel", "Email", "Bonus", "Fine", "Hard Salary", "Net Salary\n");
             for (Employee e : employees) {
                 if (e instanceof FullTimeEmployee && e.getNetSalary() < averageSalary()) {
-                    System.out.printf("%-5s%-15s%-10s%-10s%-15s%-35s%-15s%-15s%-15s%s",
+                    System.out.printf("|%-5s|%-10s|%-10s|%-10s|%-15s|%-15s|%-15s|%-15s|%-15s|%-15s%n|",
                             e.getId(), "Full-time", e.getName(), e.getAge(), e.getTel(), e.getEmail(),
                             ((FullTimeEmployee) e).getBonus(), ((FullTimeEmployee) e).getFine(),
                             ((FullTimeEmployee) e).getHardSalary(),
-                            e.getNetSalary() + "\n");
+                            e.getNetSalary());
                 }
             }
         }
@@ -296,10 +292,18 @@ public class EmployeeManagementSystem {
                 System.out.println("There are not any full-time employees. Try to add an employee first!");
             } else {
                 fullTimeEmployees.sort(FullTimeEmployee::compareTo);
-//                System.out.println(FlipTableConverters.fromIterable(fullTimeEmployees,));
+                String[] headers = {"ID", "Type", "Name", "Age", "Tel", "Email", "Bonus", "Fine", "Hard Salary", "Net Salary"};
+                Object[][] data = new Object[fullTimeEmployees.size()][10];
+                for (int i = 0; i < fullTimeEmployees.size(); i++) {
+                    data[i] = new Object[]{fullTimeEmployees.get(i).getId(), "Full-Time", fullTimeEmployees.get(i).getName(),
+                            fullTimeEmployees.get(i).getAge(), fullTimeEmployees.get(i).getTel(), fullTimeEmployees.get(i).getEmail(),
+                            fullTimeEmployees.get(i).getBonus(), fullTimeEmployees.get(i).getFine(),
+                            fullTimeEmployees.get(i).getHardSalary(), fullTimeEmployees.get(i).getNetSalary()};
                 }
+                System.out.println(FlipTableConverters.fromObjects(headers, data));
             }
         }
+    }
 
 
     private void writeToFile() {
@@ -318,7 +322,7 @@ public class EmployeeManagementSystem {
     private ArrayList<Employee> readFromFile() {
         ArrayList<Employee> employeesList = new ArrayList<>();
         try {
-            FileInputStream inputFile = new FileInputStream("Mini OutputTableTest/src/mini_test_2_3/EmployeesList.txt");
+            FileInputStream inputFile = new FileInputStream("Mini Test/src/mini_test_2_3/EmployeesList.txt");
             if (inputFile.available() > 0) {
                 ObjectInputStream ois = new ObjectInputStream(inputFile);
                 employeesList = (ArrayList<Employee>) ois.readObject();
@@ -336,22 +340,22 @@ public class EmployeeManagementSystem {
         if (employees.isEmpty()) {
             System.out.println("The list is EMPTY now. Try add first!");
         } else {
-            System.out.printf("%-5s%-15s%-10s%-10s%-15s%-35s%-15s%-15s%-15s%-15s%s",
-                    "ID", "Type", "Name", "Age", "Tel", "Email", "Bonus", "Fine", "Hard Salary", "Work Hours", "Net Salary\n");
-            for (Employee e : employees) {
-                if (e instanceof FullTimeEmployee) {
-                    System.out.printf("%-5s%-15s%-10s%-10s%-15s%-35s%-15s%-15s%-15s%-15s%s",
-                            e.getId(), "Full-time", e.getName(), e.getAge(), e.getTel(), e.getEmail(),
-                            ((FullTimeEmployee) e).getBonus(), ((FullTimeEmployee) e).getFine(),
-                            ((FullTimeEmployee) e).getHardSalary(), "na",
-                            e.getNetSalary() + "\n");
-                } else if (e instanceof PartTimeEmployee) {
-                    System.out.printf("%-5s%-15s%-10s%-10s%-15s%-35s%-15s%-15s%-15s%-15s%s",
-                            e.getId(), "Part-time", e.getName(), e.getAge(), e.getTel(), e.getEmail(),
-                            "na", "na","na", ((PartTimeEmployee) e).getWorkHours(),
-                            e.getNetSalary() + "\n");
+            String[] headers = {"ID", "Type", "Name", "Age", "Tel", "Email", "Bonus", "Fine", "Hard Salary", "Work Hours", "Net Salary"};
+            Object[][] data = new Object[employees.size()][11];
+            for (int i = 0; i < employees.size(); i++) {
+                if (employees.get(i) instanceof FullTimeEmployee) {
+                    data[i] = new Object[]{employees.get(i).getId(), "Full-Time", employees.get(i).getName(),
+                            employees.get(i).getAge(), employees.get(i).getTel(), employees.get(i).getEmail(),
+                            ((FullTimeEmployee) employees.get(i)).getBonus(), ((FullTimeEmployee) employees.get(i)).getFine(),
+                            ((FullTimeEmployee) employees.get(i)).getHardSalary(), "na", employees.get(i).getNetSalary()};
+                } else if (employees.get(i) instanceof PartTimeEmployee) {
+                    data[i] = new Object[]{employees.get(i).getId(), "Part-Time", employees.get(i).getName(),
+                            employees.get(i).getAge(), employees.get(i).getTel(), employees.get(i).getEmail(), "na", "na", "na",
+                            ((PartTimeEmployee) employees.get(i)).getWorkHours(), employees.get(i).getNetSalary()
+                    };
                 }
             }
+            System.out.println(FlipTableConverters.fromObjects(headers, data));
         }
     }
 
